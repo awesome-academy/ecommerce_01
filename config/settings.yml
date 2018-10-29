@@ -1,0 +1,11 @@
+category:
+  name:
+    maximum_length: 255
+comment:
+  content:
+    min: 4
+    max: 300
+order_item:
+  greater_equal: 0
+order:
+  greater_equal: 0
