@@ -1,0 +1,23 @@
+<% provide(:title, t(".title")) %>
+<h1><%= link_to t(".title"), signup_path %></h1>
+
+<div class="row">
+  <div class="col-md-6 col-md-offset-3">
+    <%= form_for(@user) do |f| %>
+    <%= render "shared/error_messages" %>
+      <%= f.label t(".name_text") %>
+      <%= f.text_field :name, class: "form-control" %>
+
+      <%= f.label t(".email_text") %>
+      <%= f.email_field :email, class: "form-control" %>
+
+      <%= f.label t(".password_text")%>
+      <%= f.password_field :password, class: "form-control" %>
+
+      <%= f.label t(".password_confirmation_text"), t(".confirmation") %>
+      <%= f.password_field :password_confirmation, class: "form-control" %>
+
+      <%= f.submit "Create your account", class: "btn btn-primary" %>
+    <% end %>
+  </div>
+</div>
