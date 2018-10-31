@@ -1,0 +1,13 @@
+<tr>
+  <td>
+    <%= link_to product.name, product_path(product) %>
+  </td>
+  <td><%= product.description %></td>
+  <td><%= product.size %></td>
+  <td><%= product.color %></td>
+  <td id = "price">
+    <%= number_to_currency product.price, unit: t(".unit"),
+      delimiter: t(".delimiter"), format: t(".format"),
+      precision: Settings.product.precision %>
+  </td>
+</tr>

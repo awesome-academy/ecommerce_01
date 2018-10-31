@@ -1,0 +1,8 @@
+<h1><%= link_to t(".header"), categories_path %> >
+  <%= @category.name %>
+</h1>
+<ol>
+  <% @categories.each do |category| %>
+  <li><%= link_to t(".product", name: category.name, count: category.products.size), category_path(category) %></li>
+  <% end %>
+</ol>

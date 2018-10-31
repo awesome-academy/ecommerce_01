@@ -1,4 +1,4 @@
-Rails.application.routes.draw do  
+Rails.application.routes.draw do
   root "static_pages#home"
 
   get "/signup", to:"users#new"
@@ -7,4 +7,8 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   resources :users
+  resources :products, only: :show
+  resources :categories, only: %i(index show) do
+    resources :products, only: :index
+  end
 end

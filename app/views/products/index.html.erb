@@ -1,0 +1,16 @@
+<h1>
+  <%= link_to t(".categories"), categories_path %>
+  >
+  <%= @category.name %></h1>
+<%= will_paginate @products %>
+<table>
+  <tr>
+    <th><%= t ".name" %></th>
+    <th><%= t ".description" %></th>
+    <th><%= t ".size" %></th>
+    <th><%= t ".color" %></th>
+    <th><%= t ".price" %></th>
+  </tr>
+  <%= render @products %>
+</table>
+
