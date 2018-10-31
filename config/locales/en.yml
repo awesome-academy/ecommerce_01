@@ -1,48 +1,8 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t 'hello'
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t('hello') %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   'true': 'foo'
-#
-# To learn more, please read the Rails Internationalization guide
-# available at http://guides.rubyonrails.org/i18n.html.
-
 en:
   helpers:
     application:
       base_title: Ecommerce01
   layouts:
-    footer:
-      address: Địa chỉ văn phòng
-      address_text: 16 Lý Thường Kiệt, Thạch Thang, Hải Châu, Đà Nẵng
-      location: ThaiHieu's Store nhận đặt hàng trực tuyến và giao hàng tận nơi, chưa hỗ trợ mua và nhận hàng trực tiếp tại văn phòng hoặc trung tâm xử lý đơn hàng
-      address_return: Địa chỉ gửi hàng đổi/trả/bảo hành
-      center_text: Trung tâm xử lý đơn hàng ThaiHieu's Store - Kiệt số K205/66, đường Trần Thái Tông, Phường An Khê, Quận Thanh Khê, TP. Đà Nẵng
-      text1: (Tham khảo
-      text2: hướng dẫn đổi, trả, bảo hành 
-      text3: hoặc liên hệ 1900-6035 để được hướng dẫn thêm)
     header:
       store_name: ThaiHieu Technique
       home_text: Trang chu
@@ -52,6 +12,15 @@ en:
       setting_text: Settings
       log_out_text: Log out
       log_in_text: Log in
+    footer:
+      address: Địa chỉ văn phòng
+      address_text: 16 Lý Thường Kiệt, Thạch Thang, Hải Châu, Đà Nẵng
+      location: ThaiHieu's Store nhận đặt hàng trực tuyến và giao hàng tận nơi, chưa hỗ trợ mua và nhận hàng trực tiếp tại văn phòng hoặc trung tâm xử lý đơn hàng
+      address_return: Địa chỉ gửi hàng đổi/trả/bảo hành
+      center_text: Trung tâm xử lý đơn hàng ThaiHieu's Store - Kiệt số K205/66, đường Trần Thái Tông, Phường An Khê, Quận Thanh Khê, TP. Đà Nẵng
+      text1: (Tham khảo
+      text2: hướng dẫn đổi, trả, bảo hành
+      text3: hoặc liên hệ 1900-6035 để được hướng dẫn thêm)
   sessions:
     new:
       title: Log in
@@ -59,12 +28,6 @@ en:
       password_text: password
       new_user_text: New user?
       sign_up_text: Sign up now!
-  shared:
-    error_messages:
-      form_text: The form contains
-      errors_count:
-        one: 1 error
-        other: "%{count} errors"
   users:
     new:
       title: Sign up
@@ -78,11 +41,53 @@ en:
       text1: This is the home page for the
       text2: Amazon
       text3: ecommerce website
-      sign_up: Sign up now!    
+      sign_up: Sign up now!
+  categories:
+    index:
+      header: "Categories"
+    show:
+      header: "Categories"
+      product:
+        zero: "%{name} (0 product)"
+        one: "%{name} (1 product)"
+        other: "%{name} (%{count} products)"
+  products:
+    index:
+      categories: "Categories"
+      name: "Name"
+      description: "Description"
+      size: "Size"
+      color: "Color"
+      price: "Price"
+    show:
+      back: "Back"
+      description: "Description"
+      size: "Size"
+      color: "Color"
+      price: "Price"
+      unit: "VND"
+      delimiter: "."
+      format: "%n %u"
+    product:
+      unit: "VND"
+      delimiter: "."
+      format: "%n %u"
+  shared:
+    error_messages:
+      error_content: The form contains
+      error_count:
+        zero: "0 error"
+        one: "1 error"
+        other: "%{count} errors"
   controllers:
     sessions:
       login_fail: Invalid email/password combination
     users:
       show_fail: rat tiec! khong tim thay ban roi :(
       create_success: chuc mung ban da dang ki thanh cong
+  controller:
+    categories:
+      not_found: "Category not found"
+    products:
+      not_found: "Products not found"
 

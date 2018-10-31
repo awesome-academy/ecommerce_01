@@ -1,0 +1,19 @@
+<h1><%= @product.name %></h1>
+<table>
+  <tr>
+    <th><%= t ".description" %></th>
+    <th><%= t ".size" %></th>
+    <th><%= t ".color" %></th>
+    <th><%= t ".price" %></th>
+  </tr>
+  <tr>
+    <td><%= @product.description %></td>
+    <td><%= @product.size %></td>
+    <td><%= @product.color %></td>
+    <td><%= number_to_currency @product.price, unit: t(".unit"),
+      delimiter: t(".delimiter"), format: t(".format"),
+      precision: Settings.product.precision %></td>
+  </tr>
+</table>
+<%= link_to t(".back"), categories_path, class: "btn btn-primary" %>
+<br>

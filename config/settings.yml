@@ -9,3 +9,6 @@ order_item:
   greater_equal: 0
 order:
   greater_equal: 0
+product:
+  per_page: 15
+  precision: 0
