@@ -6,8 +6,16 @@ table, th, td {
   border-collapse: collapse;
   padding: 12px;
   overflow: hidden;
+  width: 100%;
+  white-space:nowrap;
 }
+
 #price {
   text-align: right;
 }
 
+.image_summit {
+  height: 40px;
+  width: 40px;
+  background: url("icon_cart.png");
+}

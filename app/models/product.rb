@@ -18,4 +18,7 @@ class Product < ApplicationRecord
   scope :list_by_category, (lambda do |category_id|
     where("category_id = ?", category_id)
   end)
+  scope :basic_product_info, (lambda do
+    select("id, name, description, size, color, price")
+  end)
 end
