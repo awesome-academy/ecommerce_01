@@ -3,6 +3,6 @@
 </h1>
 <ol>
   <% @categories.each do |category| %>
-  <li><%= link_to t(".product", name: category.name, count: category.products.size), category_path(category) %></li>
+  <li class = "categories"><%= link_to t(".product", name: category.name, count: category.products.size), category_path(category) %></li>
   <% end %>
 </ol>

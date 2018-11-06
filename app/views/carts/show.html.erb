@@ -1,0 +1,24 @@
+<h1><%= t ".header" %></h1>
+<% if @order_items.blank? || @order_items.size == 0 %>
+  <p><%= t ".no_items_in_cart" %></p>
+  <%= link_to t(".back"), categories_path, class: "btn btn-primary" %>
+<% else %>
+  <table>
+  <% @total = 0 %>
+  <%= render "shared/product_header" %>
+  <%= render partial: "order_item_in_cart", collection: @order_items, as: :order_item, locals: {products: @products} %>
+  <%= hidden_field_tag :order_total, value: @total %>
+  <tr>
+    <th><%= t ".total" %></th>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td></td>
+    <td><%= number_to_currency @total %></td>
+  </tr>
+  </table>
+  <%= link_to t(".back"), categories_path, class: "btn btn-primary" %>
+  <%= link_to t(".checkout"), "#", class: "btn btn-success" %>
+<% end %>
+

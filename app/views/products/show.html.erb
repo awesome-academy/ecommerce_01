@@ -1,4 +1,4 @@
-<h1><%= @product.name %></h1>
+<h1 class="product_name"><%= @product.name %></h1>
 <table>
   <tr>
     <th><%= t ".description" %></th>
@@ -15,5 +15,22 @@
       precision: Settings.product.precision %></td>
   </tr>
 </table>
+<br>
+<%= form_for :order_item, url: cart_path, remote: true do |f| %>
+  <div class="row adjust-height">
+    <div class="col-md-1">
+      <%= f.label :quantity, class: "h-100" %>
+    </div>
+    <div class="col-md-2">
+      <%= f.number_field :quantity, value: Settings.product.default_quantity, min: Settings.product.min_quantity, class: "h-100" %>
+    </div>
+    <%= f.hidden_field :price, value: @product.price %>
+    <%= f.hidden_field :product_id, value: @product.id %>
+    <div class="col-md-2">
+      <%= f.submit t(".add_to_cart"), class: "btn btn-success" %>
+    </div>
+  </div>
+<% end %>
+<br>
 <%= link_to t(".back"), categories_path, class: "btn btn-primary" %>
 <br>

@@ -3,7 +3,8 @@
     <%= link_to t(".store_name"), root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to t(".home_text"), root_path %></li>
+        <li><%= link_to t(".home_page"), root_path %></li>
+        <li><%= link_to t(".categories"), categories_path %></li>
         <% if logged_in? %>
           <li><%= link_to t(".user_text"), "#" %></li>
           <li class="dropdown">

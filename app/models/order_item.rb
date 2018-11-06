@@ -5,4 +5,8 @@ class OrderItem < ApplicationRecord
     numericality: {greater_than_or_equal_to: Settings.order_item.greater_equal}
   validates :total,
     numericality: {greater_than_or_equal_to: Settings.order_item.greater_equal}
+
+  def cal_total product, quantity
+    product.price * quantity
+  end
 end

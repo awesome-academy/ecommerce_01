@@ -10,9 +10,12 @@ class ProductsController < ApplicationController
 
   def show
     @product = Product.find_by id: params[:id]
-    return if @product
-    flash[:danger] = t "controller.products.not_found"
-    redirect_to categories_path
+    if @product
+      @order_item = OrderItem.new
+    else
+      flash[:danger] = t "controller.products.not_found"
+      redirect_to categories_path
+    end
   end
 
   private
@@ -20,6 +23,7 @@ class ProductsController < ApplicationController
   def load_category
     @category = Category.find_by id: params[:category_id]
     return if @category
-    render_404
+    flash[:danger] = t "controller.categories.not_found"
+    redirect_to categories_path
   end
 end

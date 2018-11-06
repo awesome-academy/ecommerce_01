@@ -2,38 +2,44 @@
 @import "bootstrap";
 
 /* universal */
-body {
+html, body {
   padding-top: 60px;
+  height: 100%;
 }
-  
+
 section {
   overflow: auto;
 }
-  
+
 textarea {
   resize: vertical;
 }
-  
+
 .center {
   text-align: center;
 }
-  
+
 .center h1 {
   margin-bottom: 10px;
+}
+
+#content {
+  height: 100%;
+  position: relative;
 }
 
   /* typography */
 h1, h2, h3, h4, h5, h6 {
   line-height: 1;
 }
-  
+
 h1 {
   font-size: 3em;
   letter-spacing: -2px;
   margin-bottom: 30px;
   text-align: center;
 }
-  
+
 h2 {
   font-size: 1.2em;
   letter-spacing: -1px;
@@ -42,7 +48,7 @@ h2 {
   font-weight: normal;
   color: #777;
 }
-  
+
 p {
   font-size: 1.1em;
   line-height: 1.7em;
@@ -59,7 +65,7 @@ p {
   padding-top: 9px;
   font-weight: bold;
 }
-  
+
 #logo:hover {
   color: #fff;
   text-decoration: none;
@@ -67,18 +73,19 @@ p {
 
   /* footer */
 footer {
-  margin-top: 45px;
+  bottom: 0;
   padding-top: 5px;
-  border-top: 1px solid #eaeaea;
-  color: #777;
+  padding-bottom: 5px;
+  border-top: 1px solid silver;
+  color: gray;
 }
 
 footer a {
-  color: #555;
+  color: gray;
 }
 
 footer a:hover {
-  color: #222;
+  color: black;
 }
 
 footer small {
@@ -118,5 +125,25 @@ input {
   @extend .has-error;
   .form-control {
     color: $state-danger-text;
+  }
+}
+
+/* categories */
+.categories {
+  font-size: 2em;
+}
+
+/* products */
+.product_name {
+  text-align: left !important;
+}
+
+.adjust-height {
+  label {
+    height: 100%;
+    font-size: 1.2em;
+  }
+  input {
+    font-size: 1.3em;
   }
 }
