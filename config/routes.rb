@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   delete "/logout", to: "sessions#destroy"
   get "/cart", to: "carts#show"
   post "/cart", to: "carts#update"
+  put "/cart", to: "carts#update"
   resources :users
   resources :products, only: :show
   resources :categories, only: %i(index show) do

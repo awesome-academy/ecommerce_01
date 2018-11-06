@@ -9,6 +9,7 @@ class CartsController < ApplicationController
 
   def update
     return add_order_item if request.post?
+    return update_order_item_quantity if request.put?
   end
 
   private
@@ -21,6 +22,14 @@ class CartsController < ApplicationController
         render js: "alert(I18n.t('controller.carts.add_successfully'))",
           layout: false
       end
+    end
+  end
+
+  def update_order_item_quantity
+    session[:cart][params[:product_id]]["quantity"] = params[:quantity]
+    respond_to do |format|
+      format.html{redirect_to cart_path}
+      format.js
     end
   end
 

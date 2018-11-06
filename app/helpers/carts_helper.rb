@@ -1,5 +1,4 @@
 module CartsHelper
-
   private
 
   def order_item_total order_item
@@ -7,7 +6,7 @@ module CartsHelper
   end
 
   def load_product_details products, id
-    @product = products.select {|item| item.id == id}
+    @product = products.select{|item| item.id == id}
   end
 
   def render_404
