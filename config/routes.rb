@@ -9,6 +9,7 @@ Rails.application.routes.draw do
   get "/cart", to: "carts#show"
   post "/cart", to: "carts#update"
   put "/cart", to: "carts#update"
+  delete "/cart", to: "carts#update"
   resources :users
   resources :products, only: :show
   resources :categories, only: %i(index show) do
