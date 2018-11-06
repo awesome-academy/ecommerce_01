@@ -14,7 +14,7 @@ module CartsHelper
       quantity = order_items.select do |item|
         item["product_id"] == product["id"].to_s
       end
-      subtotal = product["price"].to_d * quantity[0]["quantity"].to_i
+      product["price"].to_d * quantity[0]["quantity"].to_i
     end
   end
 

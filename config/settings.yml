@@ -17,4 +17,6 @@ product:
   per_page: 15
   min_quantity: 1
   default_quantity: 1
+recent_viewed_products: 15
+recent_products_expiration: 24
 domain: "0.0.0.0"

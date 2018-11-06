@@ -28,6 +28,7 @@ en:
       setting_text: Settings
       log_out_text: Log out
       log_in_text: Log in
+      sign_up: Sign up
     footer:
       address: "Address:"
       address_text: 16 Ly Thuong Kiet, Thach Thang, Hai Chau, Da Nang
@@ -37,7 +38,6 @@ en:
       email_text: email
       password_text: password
       new_user_text: New user?
-      sign_up_text: Sign up now!
   users:
     new:
       title: Sign up
@@ -50,6 +50,7 @@ en:
       welcome: Welcome to ThaiHieu's Store
       content: This is the home page for the ecommerce website
       sign_up: Sign up now!
+      recent_product: Recent Product
   categories:
     index:
       header: "Categories"

@@ -1,7 +1,50 @@
-<div class="center jumbotron">
-  <h1><%= t".welcome" %></h1>
-  <h2>
-    <%= t ".content" %>
-  </h2>
-  <%= link_to t(".sign_up"), signup_path, class: "btn btn-lg btn-primary" %>
+<div class="container">
+  <div class="row">
+    <div class="col-sm-4 my-5">
+      <!-- Categories Menu-->
+    </div>
+    <div class="col-sm-8 my-5">
+      <!--Best Buy product-->
+    </div>
+  </div>
+  <div class="row row-offcanvas row-offcanvas-right">
+    <div class="col-xs-12 col-sm-12">
+      <div class="row">
+        <nav class="navbar bg-dark text-white">
+          <h5>Trending Products</h5>
+        </nav>
+      </div>
+      <div class="row bg-white">
+        <div class=" card-body col-xs-6 col-lg-4">
+          <img class="card-img-top" src="https://secure.gravatar.com/avatar/11" alt="Product Image">
+          <h5 class="card-title">Product name</h5>
+          <p class="card-text">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+        <div class=" card-body col-xs-6 col-lg-4">
+          <img class="card-img-top" src="https://secure.gravatar.com/avatar/11" alt="Product Image">
+          <h5 class="card-title">Product name</h5>
+          <p class="card-text">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+        <div class=" card-body col-xs-6 col-lg-4">
+          <img class="card-img-top" src="https://secure.gravatar.com/avatar/11" alt="Product Image">
+          <h5 class="card-title">Product name</h5>
+          <p class="card-text">Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui. </p>
+          <p><a class="btn btn-default" href="#" role="button">View details &raquo;</a></p>
+        </div>
+      </div>
+      <div class="row mt-3">
+        <nav class="navbar bg-dark text-white">
+          <h5><%= t ".recent_product" %></h5>
+        </nav>
+      </div>
+      <div class="row bg-white">
+        <!-- Recent Products-->
+        <section class="card flex-row">
+          <%= render partial: "recent_product", collection: @recent_products, as: :recent_product %>
+        </section>
+      </div>
+    </div>
+  </div>
 </div>
