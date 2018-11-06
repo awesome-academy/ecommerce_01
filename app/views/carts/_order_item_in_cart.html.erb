@@ -6,10 +6,8 @@
     <td><%= @product[0].size %></td>
     <td><%= @product[0].color %></td>
     <td><%= number_to_currency @product[0].price %></td>
-    <td><%= f.number_field :quantity, value: order_item["quantity"].to_i, min: Settings.product.min_quantity %></td>
-    <td class="total"><%= number_to_currency order_item_total(order_item) %></td>
-    <%= f.hidden_field :product_id, value: order_item["product_id"] %>
-    <td><%= f.submit t(".update_quantity"), class: "btn btn-info" %></td>
+    <td id="<%= order_item["product_id"] %>" class="quantity-in-cart"><%= f.number_field :quantity, value: order_item["quantity"].to_i, min: Settings.product.min_quantity %></td>
+    <td><%= number_to_currency order_item_total(order_item) %></td>
     <td><%= link_to t(".remove"), order_item, data: {confirm: t(".confirm_remove")}, method: :delete %></td>
   </tr>
   <% @total += order_item_total(order_item) %>

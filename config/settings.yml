@@ -8,9 +8,9 @@ comment:
     min: 4
     max: 300
 order_item:
-  greater_equal: 0
+  greater_equal: 1
 order:
-  greater_equal: 0
+  greater_equal: 1
 product:
   per_page: 15
   min_quantity: 1
