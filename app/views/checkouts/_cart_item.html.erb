@@ -1,0 +1,13 @@
+<div class="row mt-3">
+  <div class="col-md-6">
+    <% load_product_details(products, cart_item["product_id"].to_i)%>
+    <%= text_field_tag :product_name, @product[0].name, disabled: true %>
+  </div>
+  <div class="col-md-1 text-center">x</div>
+  <div class="col-md-2">
+    <%= text_field_tag :quantity, cart_item["quantity"], disabled: true %>
+  </div>
+  <div class="col-md-3">
+    <%= text_field_tag :price, number_to_currency(@product[0].price), disabled: true %>
+  </div>
+</div>

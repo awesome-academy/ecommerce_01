@@ -12,6 +12,11 @@ en:
   helpers:
     application:
       base_title: Ecommerce01
+    label:
+      order:
+        order_name: Order Name
+        order_phone: Order Phone
+        order_address: Order Address
   layouts:
     header:
       store_name: ThaiHieu Technique
@@ -70,6 +75,19 @@ en:
       update_quantity: "Update Quantity"
       remove: Remove
       confirm_remove: "Are you sure to remove this product?"
+  checkouts:
+    new:
+      head_content: Billing Address
+      next: Next
+      placeholder_order_name: "Enter your name here"
+      placeholder_order_phone: "Enter your phone number here"
+      placeholder_order_address: "Enter your address here"
+      back_to_cart: Back to Cart
+    confirm:
+      edit_billing: Edit Billing Address
+      finish_checkout: Finish Checkout
+      billing: Billing Address
+      cart_overview: Cart Summary
   products:
     show:
       add_to_cart: "Add to cart"
@@ -80,10 +98,6 @@ en:
       size: "Size"
       color: "Color"
       price: "Price"
-    product:
-      unit: "VND"
-      delimiter: "."
-      format: "%n %u"
   shared:
     error_messages:
       error_content: The form contains
@@ -116,3 +130,7 @@ en:
     carts:
       add_successfully: 'Successfully add product to your cart!'
       remove_unsuccessfully: 'Remove product Failed!'
+    checkouts:
+      require_login: "Please, login to proceed checkout"
+      checkout_failed: Checkout failed. Please contact tech support!
+      checkout_successfully: Checkout successfully!

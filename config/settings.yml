@@ -2,7 +2,9 @@ category:
   name:
     maximum_length: 255
 carts:
-  cookie_expire: 24
+  cookies_expiry: 24
+checkouts:
+  cookies_expiry: 24
 comment:
   content:
     min: 4
@@ -15,3 +17,4 @@ product:
   per_page: 15
   min_quantity: 1
   default_quantity: 1
+domain: "0.0.0.0"

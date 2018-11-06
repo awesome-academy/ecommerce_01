@@ -1,13 +1,14 @@
-@import "bootstrap-sprockets";
-@import "bootstrap";
-
 table, th, td {
   border: 1px solid black;
   border-collapse: collapse;
   padding: 12px;
   overflow: hidden;
-  width: 100%;
+  width: 80%;
   white-space:nowrap;
+}
+
+table th {
+  text-align: center;
 }
 
 #price {
@@ -15,7 +16,7 @@ table, th, td {
 }
 
 .image_summit {
-  height: 40px;
-  width: 40px;
+  height: 40px !important;
+  width: 40px !important;
   background: url("icon_cart.png");
 }

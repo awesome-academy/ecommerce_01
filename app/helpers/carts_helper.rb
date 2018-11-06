@@ -9,6 +9,15 @@ module CartsHelper
     @product = products.select{|item| item.id == id}
   end
 
+  def show_total_in_cart products, order_items
+    products.sum do |product|
+      quantity = order_items.select do |item|
+        item["product_id"] == product["id"].to_s
+      end
+      subtotal = product["price"].to_d * quantity[0]["quantity"].to_i
+    end
+  end
+
   def render_404
     respond_to do |format|
       format.html do

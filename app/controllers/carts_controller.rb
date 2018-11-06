@@ -41,7 +41,7 @@ class CartsController < ApplicationController
 
   def store_cart_cookies
     cookies[:cart] = {value: JSON.generate(session[:cart]),
-                      expires: Settings.carts.cookie_expiry}
+                      expires: Settings.carts.cookies_expiry.hours.from_now}
   end
 
   def add_to_session_cart
