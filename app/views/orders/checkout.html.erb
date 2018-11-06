@@ -1,6 +1,6 @@
 <div class="row w-100 justify-content-center">
   <!-- Form -->
-  <%= form_for :order, url: checkouts_path, class: "text-center" do |f|  %>
+  <%= form_for @order, url: orders_path, method: :post, class: "text-center" do |f|  %>
   <!--Card order info-->
     <div class="row w-100">
       <div class="card w-100">
@@ -13,6 +13,7 @@
               <%= f.label :order_name %>
             </div>
             <div class="col-md-10">
+              <%= f.hidden_field :order_name, value: @order_info["order_name"] %>
               <%= f.text_field :order_name, value: @order_info["order_name"], class: "form-control", disabled: true %>
             </div>
           </div>
@@ -21,6 +22,7 @@
               <%= f.label :order_phone %>
             </div>
             <div class="col-md-10">
+              <%= f.hidden_field :order_phone, value: @order_info["order_phone"] %>
               <%= f.text_field :order_phone, value: @order_info["order_phone"], class: "form-control", disabled: true %>
             </div>
           </div>
@@ -29,6 +31,7 @@
               <%= f.label :order_address %>
             </div>
             <div class="col-md-10">
+              <%= f.hidden_field :order_address, value: @order_info["order_address"] %>
               <%= f.text_area :order_address, value: @order_info["order_address"], class: "form-control", disabled: true %>
             </div>
           </div>
@@ -40,7 +43,7 @@
           <strong><%= t ".cart_overview" %></strong>
         </h5>
         <div class="card-body px-lg-5 pt-0">
-          <%= render partial: "cart_item", collection: @cart_items, as: :cart_item, locals: {products: @products_in_cart} %>
+            <%= render partial: "cart_item", collection: @cart_items, as: :cart_item, locals: {products: @products_in_cart, f: f} %>
         </div>
         <div class="card-body px-lg-5 pt-0">
           <div class="row">
@@ -53,7 +56,7 @@
     <!-- button -->
     <div class="row">
       <div class="col-md-3 offset-md-2">
-        <%= link_to new_checkout_path do %>
+        <%= link_to new_order_path do %>
         <button class="btn btn-info btn-rounded btn-block z-depth-0 my-4 waves-effect" type="button"><%= t ".edit_billing" %></button>
         <% end %>
       </div>
