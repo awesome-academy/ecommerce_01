@@ -10,6 +10,8 @@ class CartsController < ApplicationController
   def update
     return add_order_item if request.post?
     return update_order_item_quantity if request.put?
+    return remove_order_item if request.delete?
+    render_404
   end
 
   private
@@ -31,6 +33,10 @@ class CartsController < ApplicationController
       format.html{redirect_to cart_path}
       format.js
     end
+  end
+
+  def remove_order_item
+    session[:cart].delete(params[:product_id])
   end
 
   def store_cart_cookies

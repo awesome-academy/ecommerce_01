@@ -59,7 +59,6 @@ en:
       header: Your Cart
       no_items_in_cart: "There are no items in your cart. Please go back and add some products!"
       back: "Back"
-      confirm_remove: "Are you sure to remove this product?"
       add_to_cart: "Add to cart"
       checkout: Checkout
       total: Total
@@ -70,6 +69,7 @@ en:
       price: "Price"
       update_quantity: "Update Quantity"
       remove: Remove
+      confirm_remove: "Are you sure to remove this product?"
   products:
     show:
       add_to_cart: "Add to cart"
@@ -115,3 +115,4 @@ en:
       add_unsuccessfully: "Add product failed"
     carts:
       add_successfully: 'Successfully add product to your cart!'
+      remove_unsuccessfully: 'Remove product Failed!'
