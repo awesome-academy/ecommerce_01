@@ -3,22 +3,23 @@
   <p><%= t ".no_items_in_cart" %></p>
   <%= link_to t(".back"), categories_path, class: "btn btn-primary" %>
 <% else %>
-  <table>
-  <% @total = 0 %>
-  <%= render "shared/product_header" %>
-  <%= render partial: "order_item_in_cart", collection: @order_items, as: :order_item, locals: {products: @products} %>
-  <%= hidden_field_tag :order_total, value: @total %>
-  <tr>
-    <th><%= t ".total" %></th>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td></td>
-    <td id="cart-total"><%= number_to_currency @total %></td>
-  </tr>
-  </table>
-  <%= link_to t(".back"), categories_path, class: "btn btn-primary" %>
-  <%= link_to t(".checkout"), "#", class: "btn btn-success" %>
+  <div class="row justify-content-center">
+    <table>
+    <%= render "shared/product_header" %>
+    <%= render partial: "order_item_in_cart", collection: @order_items, as: :order_item, locals: {products: @products} %>
+    <tr>
+      <th><%= t ".total" %></th>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td id="cart-total"><%= number_to_currency show_total_in_cart(@products, @order_items) %></td>
+    </tr>
+    </table>
+  </div>
+  <div class="row justify-content-center">
+    <%= link_to t(".back"), categories_path, class: "btn btn-primary mx-5 px-5" %>
+    <%= link_to t(".checkout"), new_checkout_path, class: "btn btn-success mx-5 px-5" %>
+  </div>
 <% end %>
-

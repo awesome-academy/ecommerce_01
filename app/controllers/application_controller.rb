@@ -20,4 +20,15 @@ class ApplicationController < ActionController::Base
       format.any{head :not_found}
     end
   end
+
+  def render_500
+    respond_to do |format|
+      format.html do
+        render file: "#{Rails.root}/public/500", layout: true,
+          status: :internal_server_error
+      end
+      format.xml{head :not_found}
+      format.any{head :not_found}
+    end
+  end
 end

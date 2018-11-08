@@ -2,7 +2,8 @@ $(document).ready(function($){
 
   $(".quantity-in-cart").ready(function($){
     $(this).on("change",function(event){
-      element = event.target
+      event.preventDefault();
+     let element = event.target
       $.ajax({
         url: "/cart",
         method: "put",
