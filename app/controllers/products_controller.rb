@@ -1,5 +1,6 @@
 class ProductsController < ApplicationController
   before_action :load_category, only: :index
+  after_action ->{store_recent_products(@product.id)}, only: :show
 
   def index
     @products = Product.list_by_category(@category.id)

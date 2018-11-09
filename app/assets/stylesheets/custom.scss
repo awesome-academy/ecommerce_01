@@ -1,8 +1,13 @@
+/*mixin variables*/
+$sky-blue: #DAF0FF;
+$page_background_color: #F4F4F4;
+
 /* universal */
-html, body {
+body {
   padding-top: 30px;
   width: 100%;
   height: 100%;
+  background-color: $page_background_color;
   box-sizing: border-box;
 }
 
@@ -50,7 +55,7 @@ h2 {
   margin-bottom: 30px;
   text-align: center;
   font-weight: normal;
-  color: #777;
+  color: gray;
 }
 
 p {
@@ -62,12 +67,16 @@ p {
   width: 65%!important;
 }
 
+.bg-custom {
+  background-color: $sky-blue;
+}
+
   /* header */
 #logo {
   float: left;
   margin-right: 10px;
   font-size: 1.7em;
-  color: #fff;
+  color: orange;
   text-transform: uppercase;
   letter-spacing: -1px;
   padding-top: 9px;
@@ -75,7 +84,7 @@ p {
 }
 
 #logo:hover {
-  color: #fff;
+  color: white;
   text-decoration: none;
 }
 
@@ -114,7 +123,7 @@ footer ul li {
 
 /* forms */
 input, textarea, select, .uneditable-input {
-  border: 1px solid #bbb;
+  border: 1px solid silver;
   width: 100%;
   margin-bottom: 15px;
 }
@@ -141,19 +150,4 @@ input {
 /* categories */
 .categories {
   font-size: 2em;
-}
-
-/* products */
-.product_name {
-  text-align: left !important;
-}
-
-.adjust-height {
-  label {
-    height: 100%;
-    font-size: 1.2em;
-  }
-  input {
-    font-size: 1.3em;
-  }
 }

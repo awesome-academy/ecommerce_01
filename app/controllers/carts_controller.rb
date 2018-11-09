@@ -1,6 +1,7 @@
 class CartsController < ApplicationController
   before_action :current_cart
   after_action :store_cart_cookies, except: :show
+  after_action :add_recent_products, only: :update
 
   def show
     @order_items = session[:cart].values
@@ -25,6 +26,11 @@ class CartsController < ApplicationController
           layout: false
       end
     end
+  end
+
+  def add_recent_products
+    return unless request.post?
+    store_recent_products params[:order_item][:product_id]
   end
 
   def update_order_item_quantity

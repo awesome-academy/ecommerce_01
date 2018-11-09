@@ -8,20 +8,16 @@ class CheckoutsController < ApplicationController
   def create
     # save order and order_item
     ActiveRecord::Base.transaction do
-      @failed = 0
-      order_process
-      order_items_process
-      if @failed.positive?
-        flash.now[:danger] = t "controller.checkouts.checkout_failed"
-        render_500
-        raise ActiveRecord::Rollback
-      else
+      if order_process || order_items_process
         @order.update_attribute :status, "accepted"
         restart_cart
         remove_order_info
         flash[:success] = t "controller.checkouts.checkout_successfully"
         redirect_to root_path
       end
+    rescue StandartError
+      flash[:danger] = t "controller.checkouts.checkout_failed"
+      redirect_to cart_path
     end
     # send mail
   end
@@ -44,12 +40,13 @@ class CheckoutsController < ApplicationController
   end
 
   def load_order_info
+    @order = Order.new
     return @order_info = {} unless cookies[:order_info].present?
     @order_info = JSON.parse(cookies[:order_info])
   end
 
   def order_items_process
-    @order_items = session[:cart]
+    @order_items = session[:cart].present? ? session[:cart] : []
     @order_items.each do |key, item|
       product = Product.basic_product_info.find_by id: key
       @order_item = @order.order_items.new
@@ -58,11 +55,7 @@ class CheckoutsController < ApplicationController
       @order_item.price = product.price
       @order_item.size = product.size
       @order_item.color = product.color
-      begin
-        @order_item.save!
-      rescue StandardError
-        @failed += 1
-      end
+      @order_item.save!
     end
   end
 
@@ -71,11 +64,7 @@ class CheckoutsController < ApplicationController
     @order.order_name = @order_info["order_name"]
     @order.order_phone = @order_info["order_phone"]
     @order.order_address = @order_info["order_address"]
-    begin
-      @order.save!
-    rescue StandardError
-      @failed += 1
-    end
+    @order.save!
   end
 
   def order_params

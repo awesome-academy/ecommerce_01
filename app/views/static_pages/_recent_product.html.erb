@@ -1,0 +1,14 @@
+<% if recent_product.blank? %>
+  <div class="card--content">
+  </div>
+<% else %>
+  <%= link_to product_path(recent_product.id) do %>
+    <div class="card--content border">
+      <img src="https://secure.gravatar.com/avatar/1" alt="product-<%= recent_product.id %>">
+      <p class="pt-2 mb-0"><%= recent_product.name %></p>
+      <p class="text-danger pt-2 mb-0"><%= number_to_currency recent_product.price %></p>
+      <p class="text-muted pt-2 mb-0" ><%= recent_product.description %></p>
+    </div>
+  <% end %>
+<% end %>
+
