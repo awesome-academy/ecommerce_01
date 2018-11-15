@@ -5,6 +5,13 @@ class ApplicationController < ActionController::Base
 
   private
 
+  def check_logged_in
+    return if logged_in?
+    store_location
+    flash[:info] = t "controller.checkouts.require_login"
+    redirect_to login_path
+  end
+
   def current_cart
     return if session[:cart]
     session[:cart] = cookies[:cart].present? ? JSON.parse(cookies[:cart]) : {}

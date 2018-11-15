@@ -25,7 +25,7 @@
         <% end %>
         <li class="d-inline mr-3">
             <%= link_to cart_path do %>
-              <b id = "cart_count">0</b>
+              <b id = "cart_count"><span><%= cart_counter %></span></b>
               <%= image_tag("icon_home_cart.png") %>
             <% end %>
         </li>

@@ -92,6 +92,16 @@ en:
   products:
     show:
       add_to_cart: "Add to cart"
+      back_to_categories: Back to Categories
+      description: Description
+      size: Size
+      color: Color
+      price: Price
+      unit_in_stock: In Stock
+      your_rating: Your rating for the product
+      rating_overview: Product Rating Overview
+      overview_analysis: "%{average} average based on %{size} reviews"
+      rate: Rate
     index:
       categories: "Categories"
       name: "Name"

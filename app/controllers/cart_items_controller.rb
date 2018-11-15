@@ -8,8 +8,7 @@ class CartItemsController < ApplicationController
     respond_to do |format|
       format.html{redirect_to product_path(params[:order_item][:product_id])}
       format.js do
-        render js: "alert(I18n.t('controller.carts.add_successfully'))",
-          layout: false
+        render file: "carts/create.js.erb", content_type: "text/javascript"
       end
     end
   end
