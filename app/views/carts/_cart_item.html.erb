@@ -1,0 +1,13 @@
+<%= form_for :order_item, url: cart_item_path, method: :patch, remote: true do |f| %>
+  <tr>
+    <% load_product_details(products, cart_item["product_id"].to_i) %>
+    <td><%= link_to @product.name, product_path(@product.id) %></td>
+    <td><%= @product.description %></td>
+    <td><%= @product.size %></td>
+    <td><%= @product.color %></td>
+    <td id="price"><%= number_to_currency @product.price %></td>
+    <td id="<%= cart_item["product_id"] %>" class="quantity-in-cart"><%= f.number_field :quantity, value: cart_item["quantity"].to_i, min: Settings.product.min_quantity %></td>
+    <td><%= number_to_currency order_item_total(cart_item) %></td>
+    <td><%= button_tag "", type: "button", class: "btn btn-remove" %></td>
+  </tr>
+<% end %>

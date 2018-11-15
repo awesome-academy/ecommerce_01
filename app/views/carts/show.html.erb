@@ -1,12 +1,12 @@
 <h1><%= t ".header" %></h1>
-<% if @order_items.blank? || @order_items.size == 0 %>
+<% if @cart_items.blank? || @cart_items.size == 0 %>
   <p><%= t ".no_items_in_cart" %></p>
   <%= link_to t(".back"), categories_path, class: "btn btn-primary" %>
 <% else %>
   <div class="row justify-content-center">
     <table>
     <%= render "shared/product_header" %>
-    <%= render partial: "order_item_in_cart", collection: @order_items, as: :order_item, locals: {products: @products} %>
+    <%= render partial: "cart_item", collection: @cart_items, as: :cart_item, locals: {products: @products} %>
     <tr>
       <th><%= t ".total" %></th>
       <td></td>
@@ -14,7 +14,7 @@
       <td></td>
       <td></td>
       <td></td>
-      <td id="cart-total"><%= number_to_currency show_total_in_cart(@products, @order_items) %></td>
+      <td id="cart-total"><%= number_to_currency show_total_in_cart(@products, @cart_items) %></td>
     </tr>
     </table>
   </div>
