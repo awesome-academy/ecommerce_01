@@ -21,4 +21,6 @@ class Product < ApplicationRecord
   scope :basic_product_info, (lambda do
     select("id, name, description, size, color, price")
   end)
+  scope :list_products_by_ids, ->(ids){where("id in (#{ids})")}
+  scope :pick_product_by_id, ->(id){where("id = #{id}")}
 end

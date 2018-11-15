@@ -7,9 +7,10 @@ Rails.application.routes.draw do
   post "/login", to: "sessions#create"
   delete "/logout", to: "sessions#destroy"
   get "/cart", to: "carts#show"
-  post "/cart", to: "carts#update"
-  put "/cart", to: "carts#update"
-  delete "/cart", to: "carts#update"
+  post "/cart_items", to: "cart_items#create"
+  patch "/cart_item", to: "cart_items#update"
+  put "/cart_item", to: "cart_items#update"
+  delete "/cart_item", to: "cart_items#destroy"
   resources :users
   resources :products, only: :show
   resources :categories, only: %i(index show) do

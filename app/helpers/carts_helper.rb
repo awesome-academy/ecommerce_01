@@ -2,11 +2,11 @@ module CartsHelper
   private
 
   def order_item_total order_item
-    @product[0].price * order_item["quantity"].to_i
+    @product.price * order_item["quantity"].to_i
   end
 
   def load_product_details products, id
-    @product = products.select{|item| item.id == id}
+    @product = products.pick_product_by_id(id).first
   end
 
   def show_total_in_cart products, order_items
