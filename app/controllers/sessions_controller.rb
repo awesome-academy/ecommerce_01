@@ -14,6 +14,7 @@ class SessionsController < ApplicationController
 
   def destroy
     log_out
+    remove_order_info
     redirect_to root_path
   end
 end

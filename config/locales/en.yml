@@ -79,16 +79,16 @@ en:
   orders:
     new:
       head_content: Billing Address
-      next: Next
+      btnnext: Next
       placeholder_order_name: "Enter your name here"
       placeholder_order_phone: "Enter your phone number here"
       placeholder_order_address: "Enter your address here"
       back_to_cart: Back to Cart
-    checkout:
       edit_billing: Edit Billing Address
       finish_checkout: Finish Checkout
       billing: Billing Address
       cart_overview: Cart Summary
+      total: "Total:"
   products:
     show:
       add_to_cart: "Add to cart"
@@ -101,8 +101,8 @@ en:
       price: "Price"
   shared:
     error_messages:
-      error_content: The form contains
-      error_count:
+      errors_content: The form contains
+      errors_count:
         zero: "0 error"
         one: "1 error"
         other: "%{count} errors"
@@ -131,10 +131,19 @@ en:
     carts:
       add_successfully: 'Successfully add product to your cart!'
       remove_unsuccessfully: 'Remove product Failed!'
-    checkouts:
+    orders:
       require_login: "Please, login to proceed checkout"
-      checkout_failed: Checkout failed. Please contact tech support!
+      checkout_failed: Checkout failed. Please check all information again!
       checkout_successfully: Checkout successfully!
+      no_products_in_cart: "There are no products in cart to checkout"
+      checkout_finished: "This checkout has been finished"
+      validate_checkout_failed: "Checkout is failed!!
+        Your cart may have been changed or
+        this order has been done checkout"
+      remains_quantity:
+        zero: "%{name} remains only %{count} %{unit}"
+        one: "%{name} remains only %{count} %{unit}"
+        other: "%{name} remains only %{count} %{unit}s"
   js:
     cart:
       error_update: "Error: %{error}"
