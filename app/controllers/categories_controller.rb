@@ -1,4 +1,5 @@
 class CategoriesController < ApplicationController
+  skip_before_action :authenticate_user!, only: %i(index show)
   def index
     @categories = Category.parent_id_null_order_by_id
                           .includes :sub_categories

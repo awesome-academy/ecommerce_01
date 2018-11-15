@@ -50,7 +50,7 @@ en:
       welcome: Welcome to ThaiHieu's Store
       content: This is the home page for the ecommerce website
       sign_up: Sign up now!
-      recent_product: Recent Product
+      recent_product: "Recent Product"
   categories:
     index:
       header: "Categories"
@@ -155,6 +155,96 @@ en:
         one: "%{name} remains only %{count} %{unit}"
         other: "%{name} remains only %{count} %{unit}s"
       order_not_found: "Order not found!"
+  devise:
+    confirmations:
+      new:
+        header: "Resend confirmation instructions"
+        title_submit: "Resend confirmation instructions"
+    mailer:
+      confirmation_instructions:
+        title_welcome: "Welcome %{email} !"
+        confirm_notification: "You can confirm your account email through the link below:"
+        title_confirm: "Confirm my account"
+      email_changed:
+        title_hello: "Hello %{email} !"
+        notify_unconfirmed_email: "We're contacting you to notify you that your email is being changed to %{email}"
+        notify_changed_email: "We're contacting you to notify you that your email has been changed to %{email}"
+      password_change:
+        title_hello: "Hello %{email} !"
+        notify_content: "We're contacting you to notify you that your password has been changed."
+      reset_password_instructions:
+        title_hello: "Hello %{email} !"
+        notify_password_changed: "Someone has requested a link to change your password. You can do this through the link below."
+        title_change_password: "Change my password"
+        notify_user: "If you didn't request this, please ignore this email."
+        notify_ignore: "Your password won't change until you access the link above and create a new one."
+      unlock_instructions:
+        title_hello: "Hello %{email} !"
+        notify_locked_account: "Your account has been locked due to an excessive number of unsuccessful sign in attempts."
+        title_unlock: "Click the link below to unlock your account:"
+        title_link_unlock: "Unlock my account"
+    passwords:
+      edit:
+        header: "Change your password"
+        label_password: "New password"
+        minimum_length: "(%{min_length} characters minimum)"
+        label_password_confirmation: "Confirm new password"
+        title_submit: "Change my password"
+      new:
+        heading: Forgot your password?
+        heading_content: You can reset your password here.
+        placeholder_email: Your email address
+        title_submit: "Send me reset password instructions"
+    registrations:
+      edit:
+        header: "Edit %{name}"
+        label_name: "Name"
+        label_email: "Email"
+        label_phone: "Phone"
+        label_address: "Address"
+        notify_waiting_confirmation: "Currently waiting confirmation for: %{email}"
+        label_password: "Password"
+        note_password: "(leave blank if you don't want to change it)"
+        minimum_length: "(%{min_length} characters minimum)"
+        label_password_confirmation: "Password Confirmation"
+        label_current_password: "Current Password"
+        note_current_password: "(we need your current password to confirm your changes)"
+        title_submit: "Update"
+        heading_cancel_account: "Cancel my account"
+        cancel_content: "Unhappy?"
+        title_btn: "Cancel my account"
+        data_confirm: "Are you sure?"
+        title_link_back: "Back"
+      new:
+        placeholder_name: Your Name
+        placeholder_email: Your Email
+        placeholder_phone: Your Phone
+        placeholder_address: Your Address
+        placeholder_password: "Password (%{minimum} characters minimum)"
+        placeholder_confirmation: Password Confirmation
+        welcome: Welcome
+        welcome_content: Please, fill in the form to sign up
+        heading: Sign up an account
+        sign_up: Sign up
+    sessions:
+      new:
+        placeholder_email: "Email"
+        placeholder_password: "Password"
+        remember_me: "Remember me"
+        title_sign_in: "Log in"
+    shared:
+      links:
+        title_log_in: "Log in"
+        title_sign_up: "Sign up"
+        title_forgot_password: "Forgot your password?"
+        title_not_receive_confirmation: "Didn't receive confirmation instructions?"
+        title_not_receive_instruction: "Didn't receive unlock instructions?"
+        title_sign_in_with_google: "Sign in with %{provider}"
+    unlocks:
+      new:
+        header: "Resend unlock instructions"
+        label_email: "Email"
+        title_submit: "Resend unlock instructions"
   js:
     cart:
       error_update: "Error: %{error}"

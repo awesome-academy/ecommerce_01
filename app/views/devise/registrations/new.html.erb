@@ -1,0 +1,45 @@
+<div class="container register">
+  <div class="row">
+    <div class="col-md-3 register-left">
+      <img src="https://image.ibb.co/n7oTvU/logo_white.png" alt=""/>
+      <h3><%= t ".welcome" %></h3>
+      <p><%= t ".welcome_content" %></p>
+    </div>
+    <div class="col-md-9 register-right">
+      <div class="tab-content" id="myTabContent">
+        <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <h3 class="register-heading"><%= t ".heading" %></h3>
+          <div class="row register-form">
+              <div class="col-md-12">
+                <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+                  <%= devise_error_messages! %>
+                  <div class="form-group">
+                    <%= f.text_field :name, autofocus: true, placeholder: t(".placeholder_name"), autocomplete: "name", class: "form-control" %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.email_field :email, autofocus: true, placeholder: t(".placeholder_email"), autocomplete: "email", class: "form-control" %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.text_field :phone, autofocus: true, placeholder: t(".placeholder_phone"), autocomplete: "phone", class: "form-control" %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.text_field :address, autofocus: true, placeholder: t(".placeholder_address"), autocomplete: "address", class: "form-control" %>
+                  </div>
+                  <div class="form-group">
+                      <%= f.password_field :password, autocomplete: "new-password", placeholder: t(".placeholder_password", minimum: @minimum_password_length), class: "form-control" %>
+                  </div>
+                  <div class="form-group">
+                    <%= f.password_field :password_confirmation, placeholder: t(".placeholder_confirmation"), autocomplete: "new-password", class: "form-control" %>
+                  </div>
+                  <div class="form-group col-md-12 float-right">
+                    <%= f.submit t(".sign_up"), class: "btnRegister" %>
+                  </div>
+                <% end %>
+              </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%= render "devise/shared/links" %>

@@ -1,0 +1,5 @@
+<p><%= t ".title_welcome", email: @email %></p>
+
+<p><%= t ".confirm_notification" %></p>
+
+<p><%= link_to t(".title_confirm"), confirmation_url(@resource, confirmation_token: @token) %></p>
