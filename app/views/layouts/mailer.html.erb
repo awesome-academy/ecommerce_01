@@ -3,7 +3,73 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <style>
-      /* Email styles need to be inline */
+      .container {
+        width: 80%;
+        margin: 20px 100px 20px 100px;
+      }
+      h5 {
+        color: blue;
+      }
+      hr {
+        border-width: 1px;
+        color: gray;
+      }
+      .heading_content {
+        font-size: 15px;
+        color: gray;
+      }
+      .grid-container {
+        display: grid;
+      }
+      .info1 {
+        grid-column: 1;
+        grid-row: 1;
+      }
+      .info2 {
+        grid-column: 2;
+        grid-row: 1;
+      }
+      .info3 {
+        grid-column: 1;
+        grid-row: 2;
+      }
+      table {
+        border-collapse: collapse;
+      }
+      thead {
+        background-color: blue;
+        color: white;
+        border: none;
+      }
+        thead tr th:first-child {
+          width: 50%;
+          text-align: left;
+        }
+        thead tr th:nth-child(2) {
+          text-align: center;
+        }
+        thead tr th:nth-child(3) {
+          text-align: center;
+        }
+        thead tr th:nth-child(4) {
+          text-align: center;
+        }
+      tbody td {
+        background-color: silver;
+        height: 2em;
+      }
+      tbody td:nth-child(1) {
+        text-align: left;
+      }
+      tbody td:nth-child(2) {
+        text-align: right;
+      }
+      tbody td:nth-child(3) {
+        text-align: right;
+      }
+      tbody td:nth-child(4) {
+        text-align: right;
+      }
     </style>
   </head>
 

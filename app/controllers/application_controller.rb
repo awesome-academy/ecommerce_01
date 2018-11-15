@@ -1,9 +1,18 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: :google_oauth2
+  before_action :init_categories
   helper_method :current_cart
   include SessionsHelper
+
+  rescue_from CanCan::AccessDenied do |exception|
+    respond_to do |format|
+      format.json{head :forbidden, content_type: "text/html"}
+      format.html{redirect_to main_app.root_url, notice: exception.message}
+      format.js{head :forbidden, content_type: "text/html"}
+    end
+  end
 
   private
 
@@ -16,10 +25,10 @@ class ApplicationController < ActionController::Base
   end
 
   def check_logged_in
-    return if logged_in?
+    return if user_signed_in?
     store_location
-    flash[:info] = t "controller.checkouts.require_login"
-    redirect_to login_path
+    flash[:info] = t "controller.orders.require_login"
+    redirect_to new_user_session_path
   end
 
   def current_cart
@@ -57,6 +66,11 @@ class ApplicationController < ActionController::Base
 
   def remove_order_info
     cookies.delete :order_info, domain: Settings.domain
+  end
+
+  def init_categories
+    @categories = Category.parent_id_null_order_by_id
+                          .includes :sub_categories
   end
 
   def render_404

@@ -1,14 +1,17 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
   before_action :current_user, :check_logged_in, :current_cart,
     :load_order_info, :load_cart_info, only: %i(new create)
   before_action :validate_cart_present, :validate_cart_size,
     :validate_details_in_cart, :validate_product_quantity_in_stock,
     only: :create
   after_action :store_order_info, only: :create
+  load_and_authorize_resource only: %i(show destroy)
   include CartsHelper
 
   def index
-    @orders = current_user.orders.accepted.paginate page: params[:page],
+    @orders = current_user.orders
+                          .orders_allowed_to_view.paginate page: params[:page],
       per_page: Settings.order.per_page
   end
 
@@ -31,7 +34,6 @@ class OrdersController < ApplicationController
       flash.now[:danger] = t "controller.orders.checkout_failed"
       render :new
     end
-    # send mail
   end
 
   def show
@@ -39,6 +41,13 @@ class OrdersController < ApplicationController
     return redirect_to root_path, alert: t(".order_not_found") unless @order
     @order_items = @order.order_items.paginate page: params[:page],
       per_page: Settings.order.per_page
+  end
+
+  def update
+    @order = Order.find_by id: params[:id]
+    return redirect_to orders_path if @order.approved? || @order.cancelled!
+    flash[:danger] = t "controller.orders.destroy_failed"
+    redirect_to orders_path
   end
 
   private
@@ -61,7 +70,7 @@ class OrdersController < ApplicationController
   end
 
   def restart_cart
-    session.delete(:cart)
+    session.delete :cart
     cookies.delete :cart, domain: Settings.domain
     remove_order_info
   end

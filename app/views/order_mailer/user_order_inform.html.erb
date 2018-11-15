@@ -1,0 +1,45 @@
+<div class="container">
+  <h3><%= t ".heading" %></h3>
+  <p class="heading_content"><%= t ".heading_content", number: @order.id %></p>
+
+  <h5><%= t ".order_infomation_heading" %></h5>
+  <hr>
+  <div class="grid-container">
+    <div class="info1">
+      <p><strong><%= t ".payment_info" %></strong></p>
+      <p><%= @order.user.name %></p>
+      <p><%= @order.user.email %></p>
+      <p><%= @order.user.phone %></p>
+    </div>
+    <div class="info2">
+      <p><strong><%= t ".billing_address" %></strong></p>
+      <p><%= @order.order_name %></p>
+      <p><%= @order.order_phone %></p>
+      <p><%= @order.order_address %></p>
+    </div>
+    <div class="info3">
+      <p><strong><%= t ".payment" %></strong><%= @order.payment_type %></p>
+      <p><strong><%= t ".shipment" %></strong><%= @order.shipper %></p>
+    </div>
+  </div>
+  <h5><%= t ".order_details_heading" %></h5>
+  <hr>
+  <table>
+    <thead>
+      <tr>
+        <th><%= t ".title_product" %></th>
+        <th><%= t ".title_price" %></th>
+        <th><%= t ".title_quantity" %></th>
+        <th><%= t ".title_total" %></th>
+      </tr>
+    </thead>
+    <tbody>
+      <%= render partial: "order_item_mailer", collection: @order.order_items, as: :order_item %>
+      <tr>
+        <td></td>
+        <td></td>
+        <td colspan="2"><strong><%= t ".in_total" %><%= number_to_currency @order.order_items.in_total %></strong></td>
+      </tr>
+    </tbody>
+  </table>
+</div>

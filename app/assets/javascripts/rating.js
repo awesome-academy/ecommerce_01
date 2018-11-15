@@ -1,11 +1,11 @@
-$(document).ready(function($) {
-  var $star_rating = $(".star-rating .fa");
+$(document).ready(function() {
+  var $star_rating = $(".star-rating .far");
   var SetRatingStar = function() {
     return $star_rating.each(function() {
       if (parseInt($star_rating.siblings("input.rating-value").val()) >= parseInt($(this).data("rating"))) {
-        return $(this).removeClass("fa-star-o").addClass("fa-star text-warning");
+        return $(this).removeClass("far fa-star").addClass("fas fa-star text-warning");
       } else {
-        return $(this).removeClass("fa-star text-warning").addClass("fa-star-o");
+        return $(this).removeClass("fas fa-star text-warning").addClass("far fa-star");
       }
     });
   };
@@ -18,7 +18,7 @@ $(document).ready(function($) {
   SetRatingStar();
 });
 
-$(document).ready(function($) {
+$(document).ready(function() {
   var elements = $(".side.right")
   var displayBar = function(){
     elements.each(function(index, el) {

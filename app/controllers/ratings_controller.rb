@@ -3,8 +3,7 @@ class RatingsController < ApplicationController
     :load_product, only: %i(create update)
 
   def create
-    rating = params[:rating][:rating_value].to_s.to_i
-    @rating = @product.ratings.new rating: rating
+    @rating = @product.ratings.new rating: rating_value
     @rating.user_id = current_user.id
     respond_to do |format|
       if @rating.save
@@ -17,9 +16,8 @@ class RatingsController < ApplicationController
 
   def update
     @rating = @product.ratings.following_user(current_user.id).first
-    rating = params[:rating][:rating_value].to_s.to_i
     respond_to do |format|
-      if @rating.update_attribute :rating, rating
+      if @rating.update_attribute :rating, rating_value
         successful_response format
       else
         failed_response format
@@ -27,10 +25,22 @@ class RatingsController < ApplicationController
     end
   end
 
+  def destroy
+    @rating = @product.ratings.following_user(current_user.id).first
+    return unless @rating
+    respond_to do |format|
+      format.html{redirect_to @product}
+    end
+  end
+
   private
 
   def load_product
     @product = Product.find_by id: params[:product_id]
+  end
+
+  def rating_value
+    params[:rating_value].to_s.to_i
   end
 
   def set_forwarding

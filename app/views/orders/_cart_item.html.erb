@@ -13,7 +13,7 @@
   <div class="col-md-3">
     <%= order_item.hidden_field :price, value: @product.price %>
     <%= text_field_tag :price, number_to_currency(@product.price), disabled: true %>
-    <%= order_item.hidden_field :corlor, value: @product.color %>
+    <%= order_item.hidden_field :color, value: @product.color %>
   </div>
 </div>
 <% end %>

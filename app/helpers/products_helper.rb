@@ -1,8 +1,7 @@
 module ProductsHelper
   def show_current_rating
-    return 0 if current_user.blank? ||
-                current_user.ratings.following_product(params[:id]).blank?
-    current_user.ratings.following_product(params[:id]).first.rating
+    return 0 unless current_user || @rating
+    @rating.rating
   end
 
   def show_reviews
@@ -12,7 +11,7 @@ module ProductsHelper
 
   def show_average
     return 0 if @product.ratings.average(:rating).blank?
-    @product.ratings.average(:rating).round(1)
+    @product.ratings.not_zero_rating.average(:rating).round(1)
   end
 
   def show_five_star_reviews

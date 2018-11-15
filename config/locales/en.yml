@@ -61,6 +61,11 @@ en:
         zero: "%{name} (0 product)"
         one: "%{name} (1 product)"
         other: "%{name} (%{count} products)"
+    sub_category:
+      product:
+        zero: "%{name} (0 product)"
+        one: "%{name} (1 product)"
+        other: "%{name} (%{count} products)"
   carts:
     show:
       header: Your Cart
@@ -78,6 +83,13 @@ en:
       remove: Remove
       confirm_remove: "Are you sure to remove this product?"
   orders:
+    index:
+      order_history: Order History
+      order_no: Order No
+      checkout_date: Checkout Date
+      order_name: Order Name
+      total: Total
+      status: Status
     new:
       head_content: Billing Address
       btnnext: Next
@@ -90,6 +102,33 @@ en:
       billing: Billing Address
       cart_overview: Cart Summary
       total: "Total:"
+    show:
+      product_name: Product Name
+      product_description: Description
+      color: Color
+      quantity: Quantity
+      price: Price
+      total: Total
+      back_to_order_history: Back
+    order:
+      cancel_confirmation: "Are you sure to cancel?"
+      cancel: "Cancel Order"
+  order_mailer:
+    user_order_inform:
+      heading: "Thank you for buying at our store"
+      heading_content: "Your order #%{number} has been accepted
+        and in approval process. We 're going to inform you later"
+      order_infomation_heading: "Order Information"
+      order_details_heading: "Order Details"
+      payment_info: "Payment Information"
+      billing_address: "Billing Address"
+      payment: "Payment: "
+      shipment: "Shipped by: "
+      title_product: "Products"
+      title_price: "Price"
+      title_quantity: "Quantities"
+      title_total: "Total"
+      in_total: "In Total:  "
   products:
     show:
       add_to_cart: "Add to cart"
@@ -143,7 +182,7 @@ en:
       add_successfully: 'Successfully add product to your cart!'
       remove_unsuccessfully: 'Remove product Failed!'
     orders:
-      require_login: "Please, login to proceed checkout"
+      require_login: "Please, login to continue"
       checkout_failed: Checkout failed. Please check all information again!
       checkout_successfully: Checkout successfully!
       no_products_in_cart: "There are no products in cart to checkout"
@@ -155,7 +194,10 @@ en:
         zero: "%{name} remains only %{count} %{unit}"
         one: "%{name} remains only %{count} %{unit}"
         other: "%{name} remains only %{count} %{unit}s"
-      order_not_found: "Order not found!"
+      order_not_found: "Order Not Found For Current User"
+      destroy_failed: "destroy order failed"
+    order_mailer:
+      user_inform: "Order Confirmation: No. %{number}"
   devise:
     confirmations:
       new:
