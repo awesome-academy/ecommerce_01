@@ -1,10 +1,16 @@
 <tr>
-  <td><strong><%= link_to order.id, order_path(order) %></strong></td>
-  <td><strong><%= order.created_at %></strong></td>
+  <td class="clickable-row" data-href = "<%= order_path order %>" >
+    <%= link_to order do %>
+      <strong><%= order_counter @orders, order %></strong>
+    <% end %>
+  </td>
+
+  <td><strong><%= l order.created_at, format: :hhmmddmmyyyy %></strong></td>
   <td><strong><%= order.order_name %></strong></td>
   <td><strong><%= number_to_currency order.order_items.sum(:price) %></strong></td>
   <td><strong><%= order.status %></strong></td>
-  <% if can? :destroy, order %>
+  <% if can? :update, order %>
     <td><%=  link_to_if order.accepted?, t(".cancel"), order, method: :put, remote: true, "data-confirm": t(".cancel_confirmation"), class: "btn btn-danger" %></td>
   <% end %>
 </tr>
+

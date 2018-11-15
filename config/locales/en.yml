@@ -9,6 +9,12 @@ en:
         significant: false
         strip_insignificant_zeros: false
         unit: "VND"
+  dates:
+    formats:
+      ddmmyyyy: "%d/%m/%y"
+  time:
+    formats:
+      hhmmddmmyyyy: "%H:%M, %d/%m/%Y"
   helpers:
     application:
       base_title: Ecommerce01
@@ -90,6 +96,7 @@ en:
       order_name: Order Name
       total: Total
       status: Status
+      no_orders: "You have no order history"
     new:
       head_content: Billing Address
       btnnext: Next
@@ -108,7 +115,7 @@ en:
       color: Color
       quantity: Quantity
       price: Price
-      total: Total
+      total: "Total:  "
       back_to_order_history: Back
     order:
       cancel_confirmation: "Are you sure to cancel?"
@@ -195,7 +202,7 @@ en:
         one: "%{name} remains only %{count} %{unit}"
         other: "%{name} remains only %{count} %{unit}s"
       order_not_found: "Order Not Found For Current User"
-      destroy_failed: "destroy order failed"
+      destroy_unsuccessfully: "Destroy order failed"
     order_mailer:
       user_inform: "Order Confirmation: No. %{number}"
   devise:
