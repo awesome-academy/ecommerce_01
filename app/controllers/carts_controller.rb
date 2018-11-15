@@ -2,7 +2,6 @@ class CartsController < ApplicationController
   before_action :current_cart
   before_action :load_products_info, only: :show
 
-
   def show
     @cart_items = session[:cart].values
   end

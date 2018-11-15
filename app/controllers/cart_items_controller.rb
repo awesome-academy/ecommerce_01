@@ -1,6 +1,6 @@
 class CartItemsController < ApplicationController
   before_action :current_cart
-  after_action :store_cart_cookies, only: %i(create update, destroy)
+  after_action :store_cart_cookies, only: %i(create update destroy)
   after_action :add_recent_products, only: :create
 
   def create
@@ -15,7 +15,7 @@ class CartItemsController < ApplicationController
   end
 
   def update
-     session[:cart][params[:product_id]]["quantity"] = params[:quantity]
+    session[:cart][params[:product_id]]["quantity"] = params[:quantity]
   rescue StandardError
     respond_to do |format|
       format.json do
