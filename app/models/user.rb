@@ -6,6 +6,7 @@ class User < ApplicationRecord
   devise :omniauthable, omniauth_providers: [:google_oauth2]
   before_save{email.downcase!}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
+  VALID_PHONE_REGEX = /\A[0-9]{10,11}\z/
   has_many :ratings, dependent: :destroy
   has_many :rating_product, through: :ratings, source: :product
   has_many :comments
@@ -14,11 +15,14 @@ class User < ApplicationRecord
     format: {with: VALID_EMAIL_REGEX},
     uniqueness: {case_sensitive: false}
   validates :name, presence: true
-  # has_secure_password
+  validates :phone, presence: true,
+    format: {with: VALID_PHONE_REGEX}
+  validates :address, presence: true,
+    length: {minimum: Settings.user.address.minimum_length,
+             maximum: Settings.user.address.maximum_length}
   enum role: {customer: 0, admin: 1}
-  scope :pick_by_email, ->(email){where("email = ?", email)}
+  scope :pick_by_email, ->(email){where("email LIKE ?", email)}
 
-  # using oauth2
   def self.from_omniauth access_token
     data = access_token.info
     user = User.pick_by_email(data["email"]).first
@@ -28,8 +32,6 @@ class User < ApplicationRecord
     user.skip_confirmation!
     return user if user.save
   end
-
-  # end using oauth2
 
   def self.digest string
     cost =  if ActiveModel::SecurePassword.min_cost
