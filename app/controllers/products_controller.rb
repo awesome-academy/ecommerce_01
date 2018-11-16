@@ -7,6 +7,7 @@ class ProductsController < ApplicationController
                        .order_by_name
                        .paginate(page: params[:page],
                           per_page: Settings.product.per_page)
+    @order_item = OrderItem.new
   end
 
   def show

@@ -135,3 +135,7 @@ en:
       require_login: "Please, login to proceed checkout"
       checkout_failed: Checkout failed. Please contact tech support!
       checkout_successfully: Checkout successfully!
+  js:
+    cart:
+      error_update: "Error: %{error}"
+      nolonger_exist: "The product's no longer exist"
