@@ -16,5 +16,8 @@ Rails.application.routes.draw do
   resources :categories, only: %i(index show) do
     resources :products, only: :index
   end
+  resources :products, only: :show do
+    resources :ratings, only: %i(create update)
+  end
   resources :orders, only: %i(new create)
 end

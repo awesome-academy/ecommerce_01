@@ -1,0 +1,3 @@
+alert(I18n.t("controller.carts.add_successfully"));
+$("#cart_count span").remove();
+$("#cart_count").html("<span><%= session[:cart].keys.size %></span");

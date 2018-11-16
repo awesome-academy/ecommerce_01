@@ -1,0 +1,11 @@
+<div class="col-md-4">
+  <div class="star-rating">
+    <span class="fa fa-minus-circle text-danger" data-rating="0" title="no rating"></span>
+    <span class="fa fa-star-o" data-rating="1" title="bad"></span>
+    <span class="fa fa-star-o" data-rating="2" title="poor"></span>
+    <span class="fa fa-star-o" data-rating="3" title="regular"></span>
+    <span class="fa fa-star-o" data-rating="4" title="good"></span>
+    <span class="fa fa-star-o" data-rating="5" title="gorgeous"></span>
+      <%= hidden_field_tag :rating_value, show_current_rating, class: "rating-value" %>
+  </div>
+</div>

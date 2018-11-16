@@ -2,7 +2,8 @@ class Product < ApplicationRecord
   PRICE_REGEX = /\A\d{1,12}\.\d{1,2}\z/
   belongs_to :category
   has_one :order_item
-  has_many :ratings
+  has_many :rating_user, through: :ratings, source: :user
+  has_many :ratings, dependent: :destroy
   has_many :comments
   validates :name, presence: true
   validates :description, presence: true
