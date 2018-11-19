@@ -16,10 +16,5 @@ Rails.application.routes.draw do
   resources :categories, only: %i(index show) do
     resources :products, only: :index
   end
-  resources :orders, only: %i(new create) do
-    collection do
-      post "checkout"
-      get "checkout"
-    end
-  end
+  resources :orders, only: %i(new create)
 end

@@ -13,10 +13,28 @@ order_item:
   greater_equal: 1
 order:
   greater_equal: 1
+  maximum_length:
+    ordername: 255
+    orderphone: 20
+    orderaddress: 500
+  minimum_length:
+    ordername: 8
+    orderphone: 8
+    orderaddress: 20
+  per_page: 15
 product:
   per_page: 15
   min_quantity: 1
   default_quantity: 1
+  min_unit_in_stock: 0
+rating:
+  star:
+    one: 1
+    two: 2
+    three: 3
+    four: 4
+    five: 5
 recent_viewed_products: 15
 recent_products_expiration: 24
 domain: "0.0.0.0"
+truncate_lenght: 20

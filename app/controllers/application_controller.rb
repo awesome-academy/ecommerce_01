@@ -38,6 +38,10 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def remove_order_info
+    cookies.delete :order_info, domain: Settings.domain
+  end
+
   def render_404
     respond_to do |format|
       format.html do
