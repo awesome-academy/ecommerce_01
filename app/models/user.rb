@@ -3,7 +3,6 @@ class User < ApplicationRecord
   # :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable
-  attr_accessor :remember_token
   before_save{email.downcase!}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   has_many :ratings, dependent: :destroy
@@ -14,7 +13,7 @@ class User < ApplicationRecord
     format: {with: VALID_EMAIL_REGEX},
     uniqueness: {case_sensitive: false}
   validates :name, presence: true
-  has_secure_password
+  # has_secure_password
   enum role: {customer: 0, admin: 1}
 
   def self.digest string

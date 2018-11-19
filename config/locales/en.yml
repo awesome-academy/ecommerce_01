@@ -154,6 +154,25 @@ en:
         zero: "%{name} remains only %{count} %{unit}"
         one: "%{name} remains only %{count} %{unit}"
         other: "%{name} remains only %{count} %{unit}s"
+  devise:
+    sessions:
+      new:
+        title_sign_in: Log in
+    registrations:
+      new:
+        placeholder_name: Name
+        placeholder_email: Email
+        placeholder_password: "Password (%{minimum} characters minimum)"
+        placeholder_confirmation: Password Confirmation
+        welcome: Welcome
+        welcome_content: Please, fill in the form to sign up
+        heading: Sign up an account
+        sign_up: Sign up
+    passwords:
+      new:
+        heading: Forgot your password?
+        heading_content: You can reset your password here.
+        placeholder_email: Your email address
   js:
     cart:
       error_update: "Error: %{error}"
