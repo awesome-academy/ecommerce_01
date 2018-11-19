@@ -31,13 +31,6 @@ class OrdersController < ApplicationController
 
   private
 
-  def check_logged_in
-    return if logged_in?
-    store_location
-    flash[:info] = t "controller.checkouts.require_login"
-    redirect_to login_path
-  end
-
   def load_cart_info
     @cart_items = session[:cart].values
     ids = session[:cart].keys.reject(&:blank?).map{|i| "'" + i.to_s + "'"}
