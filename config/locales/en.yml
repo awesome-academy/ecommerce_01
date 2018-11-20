@@ -29,6 +29,7 @@ en:
       log_out_text: Log out
       log_in_text: Log in
       sign_up: Sign up
+      dashboard: Dashboard
     footer:
       address: "Address:"
       address_text: 16 Ly Thuong Kiet, Thach Thang, Hai Chau, Da Nang

@@ -1,4 +1,5 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
   before_action :current_user, :check_logged_in, :current_cart,
     :load_order_info, :load_cart_info, only: %i(new create)
   before_action :validate_cart_present, :validate_cart_size,
@@ -6,6 +7,10 @@ class OrdersController < ApplicationController
     only: :create
   after_action :store_order_info, only: :create
   include CartsHelper
+
+  def index
+    @orders = current_user.orders.accepted
+  end
 
   def new
     init_order_and_order_item
@@ -28,6 +33,8 @@ class OrdersController < ApplicationController
     end
     # send mail
   end
+
+  def destroy; end
 
   private
 
