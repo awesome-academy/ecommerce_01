@@ -1,0 +1,8 @@
+<tr class = "clickable-row" data-href = "<%= product_path(order_item.product) %>" >
+    <td><%= order_item.product.name %></td>
+    <td><%= truncate order_item.product.description, length: Settings.truncate_lenght %></td>
+    <td><%= order_item.color %></td>
+    <td><%= order_item.quantity %></td>
+    <td><%= number_to_currency order_item.price %></td>
+</tr>
+<script src="../assets/order.js"></script>

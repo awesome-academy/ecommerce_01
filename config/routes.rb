@@ -22,5 +22,5 @@ Rails.application.routes.draw do
   resources :products, only: :show do
     resources :ratings, only: %i(create update)
   end
-  resources :orders, only: %i(new create)
+  resources :orders
 end

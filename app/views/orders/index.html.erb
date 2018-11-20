@@ -1,0 +1,24 @@
+<div class="container">
+  <div class="card w-100">
+    <h5 class="card-header info-color text-black text-center py-4 bg-custom">
+      <strong><%= t ".order_history" %></strong>
+    </h5>
+    <%= will_paginate @orders %>
+    <div class="card-body px-lg-5 pt-0">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th><%= t ".order_no" %></th>
+            <th><%= t ".checkout_date" %></th>
+            <th><%= t ".order_name" %></th>
+            <th><%= t ".total" %></th>
+            <th><%= t ".order_status" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render @orders %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

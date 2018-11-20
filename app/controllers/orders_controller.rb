@@ -9,7 +9,8 @@ class OrdersController < ApplicationController
   include CartsHelper
 
   def index
-    @orders = current_user.orders.accepted
+    @orders = current_user.orders.accepted.paginate page: params[:page],
+      per_page: Settings.order.per_page
   end
 
   def new
@@ -34,7 +35,22 @@ class OrdersController < ApplicationController
     # send mail
   end
 
-  def destroy; end
+  def show
+    @order = Order.find_by id: params[:id]
+    @order_items = @order.order_items.paginate page: params[:page],
+      per_page: Settings.order.per_page
+  end
+
+  def update
+
+  end
+
+  def destroy
+    @order = Order.find_by id: params[:id]
+    return redirect_to orders_path if @order.destroy
+    flash[:danger] = "destroy order failed"
+    redirect_to orders_path
+  end
 
   private
 
@@ -56,7 +72,7 @@ class OrdersController < ApplicationController
   end
 
   def restart_cart
-    session.delete(:cart)
+    session[:cart] = {}
     cookies.delete :cart, domain: Settings.domain
     remove_order_info
   end

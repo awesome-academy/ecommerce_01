@@ -2,7 +2,7 @@ class User < ApplicationRecord
   # Include default devise modules. Others available are:
   # :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+    :recoverable, :rememberable, :validatable, :confirmable
   devise :omniauthable, omniauth_providers: [:google_oauth2]
   before_save{email.downcase!}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
@@ -23,8 +23,8 @@ class User < ApplicationRecord
     data = access_token.info
     user = User.pick_by_email(data["email"]).first
     return if user
-    user = User.create name: data["name"],
-      email: data["email"], password: Devise.friendly_token[0,20]
+    User.create name: data["name"],
+      email: data["email"], password: Devise.friendly_token[0, 20]
   end
 
   # end using oauth2

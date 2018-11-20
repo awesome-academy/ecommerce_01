@@ -78,6 +78,13 @@ en:
       remove: Remove
       confirm_remove: "Are you sure to remove this product?"
   orders:
+    index:
+      order_history: Order History
+      order_no: Order No
+      checkout_date: Checkout Date
+      order_name: Order Name
+      total: Total
+      status: Status
     new:
       head_content: Billing Address
       btnnext: Next
@@ -90,6 +97,14 @@ en:
       billing: Billing Address
       cart_overview: Cart Summary
       total: "Total:"
+    show:
+      product_name: Product Name
+      product_description: Description
+      color: Color
+      quantity: Quantity
+      price: Price
+      total: Total
+      back_to_order_history: Back
   products:
     show:
       add_to_cart: "Add to cart"

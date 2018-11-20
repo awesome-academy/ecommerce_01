@@ -1,0 +1,38 @@
+<div class="container">
+  <div class="card w-100">
+    <h5 class="card-header info-color text-black text-center py-4 bg-custom">
+      <strong><%= t ".order_history" %></strong>
+    </h5>
+    <%= will_paginate @order_items %>
+    <div class="card-body px-lg-5 pt-0">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th><%= t ".product_name" %></th>
+            <th><%=t ".product_description" %></th>
+            <th><%= t ".color" %></th>
+            <th><%= t ".quantity" %></th>
+            <th><%= number_to_currency t ".price" %></th>
+          </tr>
+        </thead>
+        <tbody>
+          <%= render partial: "order_item", collection: @order_items, as: :order_item %>
+        </tbody>
+        <tfoot>
+          <tr>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td><strong><%= t ".total" %></strong></td>
+            <td><strong><%= number_to_currency @order.order_items.sum(:price) %></strong></td>
+          </tr>
+        </tfoot>
+      </table>
+      <div class="row">
+        <div class="col-md-2">
+          <%= link_to t(".back_to_order_history"), orders_path, class: "btn btn-primary" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

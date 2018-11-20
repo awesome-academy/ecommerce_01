@@ -1,0 +1,9 @@
+<tr>
+    <td class="clickable-row" data-href = "<%= order_path order %>"><strong><%= order.id %></strong></td>
+    <td><strong><%= order.created_at %></strong></td>
+    <td><strong><%= order.order_name %></strong></td>
+    <td><strong><%= number_to_currency order.order_items.sum(:price) %></strong></td>
+    <td><strong><%= order.status %></strong></td>
+    <td><%=  link_to "Delete", order, method: :delete, remote: true, "data-confirm": "Are you sure to delete?" %></td>
+</tr>
+<script src="assets/order.js"></script>
