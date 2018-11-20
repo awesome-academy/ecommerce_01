@@ -2,7 +2,7 @@ class Order < ApplicationRecord
   ORDER_NAME_REGEX = /\A[^0-9\-\+\*\_\.\@\?\n]+\z/i
   ORDER_PHONE_REGEX = /\A[0-9" "()+]+\z/
   belongs_to :user
-  has_many :order_items
+  has_many :order_items, dependent: :destroy
   validates_associated :order_items
   validates :order_name, presence: true, format: {with: ORDER_NAME_REGEX},
     length: {minimum: Settings.order.minimum_length.ordername,
