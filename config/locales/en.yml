@@ -61,6 +61,11 @@ en:
         zero: "%{name} (0 product)"
         one: "%{name} (1 product)"
         other: "%{name} (%{count} products)"
+    sub_category:
+      product:
+        zero: "%{name} (0 product)"
+        one: "%{name} (1 product)"
+        other: "%{name} (%{count} products)"
   carts:
     show:
       header: Your Cart

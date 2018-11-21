@@ -36,7 +36,7 @@ class OrdersController < ApplicationController
   end
 
   def show
-    @order = Order.find_by id: params[:id]
+    @order = current_user.orders.find_by id: params[:id]
     @order_items = @order.order_items.paginate page: params[:page],
       per_page: Settings.order.per_page
   end

@@ -1,3 +1,6 @@
-<li class = "categories">
-  <%= link_to category.name, category_path(category) %>
+<li class="active">
+  <a href="#Submenu-<%= category.id %>" data-toggle="collapse" aria-expanded="false" class="dropdown-toggle"><%= category.name %></a>
+  <ul class="collapse list-unstyled" id="Submenu-<%= category.id %>">
+    <%= render partial: "categories/sub_category", collection: category.sub_categories, as: :sub_category %>
+  </ul>
 </li>

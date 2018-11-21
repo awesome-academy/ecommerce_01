@@ -1,7 +1,8 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   before_action :configure_permitted_parameters, if: :devise_controller?
-  before_action :authenticate_user!, if: :devise_controller?
+  before_action :authenticate_user!, except: :google_oauth2, if: :devise_controller?
+  before_action :init_categories
   helper_method :current_cart
   include SessionsHelper
 
@@ -55,6 +56,11 @@ class ApplicationController < ActionController::Base
 
   def remove_order_info
     cookies.delete :order_info, domain: Settings.domain
+  end
+
+  def init_categories
+    @categories = Category.parent_id_null_order_by_id
+                          .includes :sub_categories
   end
 
   def render_404

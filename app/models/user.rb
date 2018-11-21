@@ -16,13 +16,13 @@ class User < ApplicationRecord
   validates :name, presence: true
   # has_secure_password
   enum role: {customer: 0, admin: 1}
-  scope :pick_by_email, ->(email){where("email = ?", email)}
+  scope :pick_by_email, ->(email){where("email = ?", email = email.downcase)}
 
   # using oauth2
   def self.from_omniauth access_token
     data = access_token.info
     user = User.pick_by_email(data["email"]).first
-    return if user
+    return user if user
     User.create name: data["name"],
       email: data["email"], password: Devise.friendly_token[0, 20]
   end
