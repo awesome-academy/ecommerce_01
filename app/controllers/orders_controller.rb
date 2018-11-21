@@ -37,8 +37,13 @@ class OrdersController < ApplicationController
 
   def show
     @order = current_user.orders.find_by id: params[:id]
-    @order_items = @order.order_items.paginate page: params[:page],
-      per_page: Settings.order.per_page
+    if @order
+      @order_items = @order.order_items.paginate page: params[:page],
+        per_page: Settings.order.per_page
+    else
+      flash[:danger] = t ".controller.orders.order_not_found"
+      redirect_to orders_path
+    end
   end
 
   def update

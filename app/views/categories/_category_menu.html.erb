@@ -6,6 +6,9 @@
       <hr class="bg-light">
     </div>
     <ul class="list-unstyled components">
+      <li class="active">
+        <%= link_to "All Products", products_path %>
+    </li>
       <%= render partial: "categories/category", collection: @categories, as: :category %>
     </ul>
   </nav>
@@ -13,4 +16,4 @@
     <div> </div>
   </nav>
 </div>
-<script src="../assets/category_menu.js"></script>
+<script src="/../assets/category_menu.js"></script>

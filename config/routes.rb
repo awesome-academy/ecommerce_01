@@ -15,12 +15,19 @@ Rails.application.routes.draw do
   put "/cart_item", to: "cart_items#update"
   delete "/cart_item", to: "cart_items#destroy"
   resources :users
-  resources :products, only: :show
+  # resources :products, only: %i(index show)
   resources :categories, only: %i(index show) do
-    resources :products, only: :index
+    member do
+      get :products, to: "categories#show"
+      post :products, to: "categories#show"
+    end
   end
-  resources :products, only: :show do
+  resources :products, only: %i(index show) do
     resources :ratings, only: %i(create update)
+    collection do
+      get :search, to: "products#index"
+      post :search, to: "products#index"
+    end
   end
   resources :orders
 end

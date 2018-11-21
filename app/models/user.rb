@@ -16,7 +16,7 @@ class User < ApplicationRecord
   validates :name, presence: true
   # has_secure_password
   enum role: {customer: 0, admin: 1}
-  scope :pick_by_email, ->(email){where("email = ?", email = email.downcase)}
+  scope :pick_by_email, ->(email){where("email = ?", email)}
 
   # using oauth2
   def self.from_omniauth access_token

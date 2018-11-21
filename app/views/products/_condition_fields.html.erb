@@ -1,0 +1,14 @@
+<div class="field row py-2">
+  <%= f.attribute_fields do |a| %>
+    <%= a.label :field_search, class: "pr-2" %>
+    <span class="col-md-3"><%= a.attribute_select associations: [:category] %></span>
+  <% end %>
+  <%= f.label :criteria, class: "px-2" %>
+  <span class="col-md-2"><%= f.predicate_select %></span>
+  <%= f.label :value, class: "px-2" %>
+  <%= f.value_fields do |v| %>
+    <span class="col-md-3"><%= v.text_field :value %></span>
+  <% end %>
+  <%= link_to "remove", '#', class: "remove_fields pl-2" %>
+</div>
+

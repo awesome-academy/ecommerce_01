@@ -175,6 +175,7 @@ en:
         zero: "%{name} remains only %{count} %{unit}"
         one: "%{name} remains only %{count} %{unit}"
         other: "%{name} remains only %{count} %{unit}s"
+      order_not_found: Order Not Found
   devise:
     sessions:
       new:
