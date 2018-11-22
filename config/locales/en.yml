@@ -110,6 +110,9 @@ en:
       price: Price
       total: Total
       back_to_order_history: Back
+    order:
+      cancel_confirmation: "Are you sure to cancel?"
+      cancel: "Cancel Order"
   products:
     show:
       add_to_cart: "Add to cart"
@@ -175,7 +178,8 @@ en:
         zero: "%{name} remains only %{count} %{unit}"
         one: "%{name} remains only %{count} %{unit}"
         other: "%{name} remains only %{count} %{unit}s"
-      order_not_found: Order Not Found
+      order_not_found: Order Not Found For Current User
+      destroy_failed: "destroy order failed"
   devise:
     sessions:
       new:

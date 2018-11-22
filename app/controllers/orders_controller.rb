@@ -6,10 +6,12 @@ class OrdersController < ApplicationController
     :validate_details_in_cart, :validate_product_quantity_in_stock,
     only: :create
   after_action :store_order_info, only: :create
+  load_and_authorize_resource only: %i(show destroy)
   include CartsHelper
 
   def index
-    @orders = current_user.orders.accepted.paginate page: params[:page],
+    @orders = current_user.orders
+                          .orders_allowed_to_view.paginate page: params[:page],
       per_page: Settings.order.per_page
   end
 
@@ -41,15 +43,15 @@ class OrdersController < ApplicationController
       @order_items = @order.order_items.paginate page: params[:page],
         per_page: Settings.order.per_page
     else
-      flash[:danger] = t ".controller.orders.order_not_found"
+      flash[:danger] = t "controller.orders.order_not_found"
       redirect_to orders_path
     end
   end
 
-  def destroy
+  def update
     @order = Order.find_by id: params[:id]
-    return redirect_to orders_path if @order.destroy
-    flash[:danger] = "destroy order failed"
+    return redirect_to orders_path if @order.approved? || @order.cancelled!
+    flash[:danger] = t "controller.orders.destroy_failed"
     redirect_to orders_path
   end
 

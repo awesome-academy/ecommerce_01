@@ -18,4 +18,5 @@ class Order < ApplicationRecord
   enum payment_type: {cash: 0, ATM_Internet_Banking: 1, international_card: 2}
   enum shipper: {vn_post: 0, viettel_post: 1}
   accepts_nested_attributes_for :order_items
+  scope :orders_allowed_to_view, ->{where("status NOT IN (0, 4)")}
 end

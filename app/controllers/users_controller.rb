@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
-  before_action :authenticate_user!, only: :show
+  before_action :authenticate_user!, :current_user, only: :show
+  load_and_authorize_resource only: :show
 
   def show
     @user = User.find_by id: params[:id]
