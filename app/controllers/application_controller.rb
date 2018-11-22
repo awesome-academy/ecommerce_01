@@ -15,10 +15,10 @@ class ApplicationController < ActionController::Base
   end
 
   def check_logged_in
-    return if logged_in?
+    return if user_signed_in?
     store_location
-    flash[:info] = t "controller.checkouts.require_login"
-    redirect_to login_path
+    flash[:info] = t "controller.orders.require_login"
+    redirect_to new_user_session_path
   end
 
   def current_cart

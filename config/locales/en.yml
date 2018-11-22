@@ -163,7 +163,7 @@ en:
       add_successfully: 'Successfully add product to your cart!'
       remove_unsuccessfully: 'Remove product Failed!'
     orders:
-      require_login: "Please, login to proceed checkout"
+      require_login: "Please, login to continue"
       checkout_failed: Checkout failed. Please check all information again!
       checkout_successfully: Checkout successfully!
       no_products_in_cart: "There are no products in cart to checkout"

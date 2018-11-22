@@ -1,6 +1,6 @@
 class ProductsController < ApplicationController
   before_action :current_cart
-  before_action :current_user, :load_product_rating, only: :show
+  before_action :current_user, only: :show
   after_action ->{store_recent_products(@product.id)}, only: :show
 
   def index
@@ -16,6 +16,7 @@ class ProductsController < ApplicationController
     @product = Product.find_by id: params[:id]
     if @product
       @order_item = OrderItem.new
+      load_product_rating
     else
       flash[:danger] = t "controller.products.not_found"
       redirect_to categories_path
@@ -32,8 +33,11 @@ class ProductsController < ApplicationController
   # end
 
   def load_product_rating
-    @product = Product.find_by id: params[:id]
-    product_rating = @product.ratings.following_user(current_user.id).first
-    @rating = product_rating || @product.ratings.new
+    @rating = if current_user &&
+                 @product.ratings.following_user(current_user.id).present?
+                @product.ratings.following_user(current_user.id).first
+              else
+                @product.ratings.new
+              end
   end
 end

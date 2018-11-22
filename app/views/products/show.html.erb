@@ -38,23 +38,24 @@
   <br>
   <hr>
   <!--rating star view -->
+  <link rel="stylesheet" type="text/css" href="/../assets/rating.scss">
   <div class="row mt-5">
     <div class="container ml-0">
-      <div class="row">
-        <div class="col-md-3">
-          <h5 class="btn btn-info"><%= t ".your_rating" %></h5>
-        </div>
-        <div class="col-md-9">
-          <%= form_for [@product, @rating], remote: true do |f| %>
-            <div class="row">
-              <%= render partial: "star_rating" %>
-              <div class="col-md-8">
-                <%= f.submit t(".rate"), class: "col-md-2 btn btn-primary text-center", id: "btnrate" %>
+        <div class="row">
+          <div class="col-md-3">
+            <h5 class="btn btn-info"><%= t ".your_rating" %></h5>
+          </div>
+          <div class="col-md-9">
+            <%= form_for [@product, @rating], remote: true do |f| %>
+              <div class="row">
+                <%= render partial: "star_rating" %>
+                <div class="col-md-4">
+                  <%= f.submit t(".rate"), class: "w-50 btn btn-primary text-center", id: "btnrate" %>
+                </div>
               </div>
-            </div>
-          <% end %>
+            <% end %>
+          </div>
         </div>
-      </div>
       <hr class="rating-horizontal">
       <!--rating sumarry view -->
       <div class="row">
@@ -73,4 +74,4 @@
     </div>
   </div>
 </div>
-<script src="../assets/rating.js" type="text/javascript"></script>
+<script src="/../assets/rating.js" type="text/javascript"></script>

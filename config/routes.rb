@@ -2,7 +2,8 @@ Rails.application.routes.draw do
   root to: "static_pages#home"
 
   devise_for :users,
-    controllers: {omniauth_callbacks: "users/omniauth_callbacks"}
+    controllers: {omniauth_callbacks: "users/omniauth_callbacks",
+                  sessions: "users/sessions"}
   mount RailsAdmin::Engine => "/admin", as: "rails_admin"
   get "/signup", to:"users#new"
   post "/signup", to: "users#create"

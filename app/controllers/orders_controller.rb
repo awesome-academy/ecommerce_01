@@ -46,10 +46,6 @@ class OrdersController < ApplicationController
     end
   end
 
-  def update
-
-  end
-
   def destroy
     @order = Order.find_by id: params[:id]
     return redirect_to orders_path if @order.destroy
@@ -77,7 +73,7 @@ class OrdersController < ApplicationController
   end
 
   def restart_cart
-    session[:cart] = {}
+    session.delete :cart
     cookies.delete :cart, domain: Settings.domain
     remove_order_info
   end
