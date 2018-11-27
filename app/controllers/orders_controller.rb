@@ -27,6 +27,7 @@ class OrdersController < ApplicationController
         @order.accepted!
         decrease_product_quantity_in_stock
         restart_cart
+        OrderMailer.user_order_inform(@order).deliver_now
         flash[:success] = t "controller.orders.checkout_successfully"
         redirect_to root_path
       end
@@ -34,7 +35,6 @@ class OrdersController < ApplicationController
       flash.now[:danger] = t "controller.orders.checkout_failed"
       render :new
     end
-    # send mail
   end
 
   def show
