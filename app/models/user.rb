@@ -1,6 +1,10 @@
 class User < ApplicationRecord
+  # Include default devise modules. Others available are:
+  # :lockable, :timeoutable, :trackable and :omniauthable
+  devise :database_authenticatable, :registerable,
+    :recoverable, :rememberable, :validatable, :confirmable
   attr_accessor :remember_token
-  before_save{self.email = email.downcase}
+  before_save{email.downcase!}
   VALID_EMAIL_REGEX = /\A[\w+\-.]+@[a-z\d\-]+(\.[a-z\d\-]+)*\.[a-z]+\z/i
   has_many :ratings, dependent: :destroy
   has_many :rating_product, through: :ratings, source: :product

@@ -7,6 +7,11 @@ class OrdersController < ApplicationController
   after_action :store_order_info, only: :create
   include CartsHelper
 
+  def index
+    @orders = current_user.orders.accepted.paginate page: params[:page],
+      per_page: Settings.order.per_page
+  end
+
   def new
     init_order_and_order_item
   end
@@ -27,6 +32,13 @@ class OrdersController < ApplicationController
       render :new
     end
     # send mail
+  end
+
+  def show
+    @order = current_user.orders.find_by id: params[:id]
+    return redirect_to root_path, alert: t(".order_not_found") unless @order
+    @order_items = @order.order_items.paginate page: params[:page],
+      per_page: Settings.order.per_page
   end
 
   private

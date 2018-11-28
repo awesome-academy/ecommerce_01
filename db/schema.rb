@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_10_31_044157) do
+ActiveRecord::Schema.define(version: 2018_11_19_015209) do
 
   create_table "categories", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -37,7 +37,6 @@ ActiveRecord::Schema.define(version: 2018_10_31_044157) do
     t.decimal "price", precision: 12, scale: 2
     t.string "size"
     t.string "color"
-    t.decimal "total", precision: 15, scale: 2
     t.bigint "product_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
@@ -47,7 +46,6 @@ ActiveRecord::Schema.define(version: 2018_10_31_044157) do
   end
 
   create_table "orders", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
-    t.decimal "total", precision: 20, scale: 2
     t.integer "status", default: 0, null: false
     t.integer "payment_type", default: 0, null: false
     t.integer "shipper", default: 0, null: false
@@ -89,6 +87,7 @@ ActiveRecord::Schema.define(version: 2018_10_31_044157) do
     t.index ["product_id", "rating"], name: "index_ratings_on_product_id_and_rating"
     t.index ["product_id"], name: "index_ratings_on_product_id"
     t.index ["rating"], name: "index_ratings_on_rating"
+    t.index ["user_id", "product_id"], name: "index_ratings_on_user_id_and_product_id", unique: true
     t.index ["user_id", "rating"], name: "index_ratings_on_user_id_and_rating"
     t.index ["user_id"], name: "index_ratings_on_user_id"
   end
@@ -103,7 +102,16 @@ ActiveRecord::Schema.define(version: 2018_10_31_044157) do
     t.string "phone"
     t.text "address"
     t.string "remember_digest"
+    t.string "encrypted_password", default: "", null: false
+    t.string "reset_password_token"
+    t.datetime "reset_password_sent_at"
+    t.datetime "remember_created_at"
+    t.string "confirmation_token"
+    t.datetime "confirmed_at"
+    t.datetime "confirmation_sent_at"
+    t.string "unconfirmed_email"
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "comments", "products"
