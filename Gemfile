@@ -31,6 +31,7 @@ gem "will_paginate-bootstrap4"
 group :development, :test do
   gem "byebug", platforms: [:mri, :mingw, :x64_mingw]
   gem "mysql2", ">=0.4.10"
+  gem "rspec-rails", "~> 3.8"
   gem "rubocop", "~> 0.54.0", require: false
 end
 
@@ -48,6 +49,7 @@ group :test do
   gem "minitest-reporters", ">=1.1.14"
   gem "rails-controller-testing", "1.0.2"
   gem "selenium-webdriver"
+  gem "shoulda-matchers"
 end
 
 group :production do
