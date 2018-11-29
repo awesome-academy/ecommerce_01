@@ -13,12 +13,14 @@
       <div class="container">
         <%= render "layouts/notice_alert" %>
       </div>
+      <!-- <div class="container"> -->
+        <%# flash.each do |message_type, message| %>
+          <%#= content_tag(:div, message, id: "flash-banner", class: "alert alert-#{message_type}") %>
+        <%# end %>
+      <!-- </div> -->
       <div class="container">
-        <% flash.each do |message_type, message| %>
-          <%= content_tag(:div, message, id: "flash-banner", class: "alert alert-#{message_type}") %>
-        <% end %>
+        <%= yield %>
       </div>
-      <%= yield %>
     </div>
     <%= render "layouts/footer" %>
   </body>

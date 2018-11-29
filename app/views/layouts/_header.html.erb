@@ -5,29 +5,28 @@
     <ul class="navbar-nav navbar-right d-inline">
         <li class="d-inline mr-3"><%= link_to t(".home_page"), root_path %></li>
         <li class="d-inline mr-3"><%= link_to t(".categories"), categories_path %></li>
-        <% if logged_in? %>
-          <li class="d-inline mr-3"><%= link_to t(".user_text"), "#" %></li>
+        <% if user_signed_in? %>
           <div class="dropdown d-inline mr-3">
             <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= link_to t(".account_text"),"#", "data-toggle": "dropdown", "aria-haspopup": "true", "aria-expanded": "false" %>
+            <%= link_to current_user.email,"#", "data-toggle": "dropdown", "aria-haspopup": "true", "aria-expanded": "false" %>
             </a>
             <div id="account_menu" class="dropdown-menu dropdown-menu-right bg-custom">
               <%= link_to t(".profile_text"), current_user, class: "dropdown-item btn-outline-dark", type:"button" %>
-              <%= link_to t(".setting_text"), "#", class: "dropdown-item btn-outline-dark", type: "button" %>
+              <%= link_to t(".setting_text"), edit_user_registration_path, class: "dropdown-item btn-outline-dark", type: "button" %>
               <%= link_to t(".order_history"), "#", class: "dropdown-item btn-outline-dark", type: "button" %>
               <hr>
-              <%= link_to t(".log_out_text"), logout_path, method: :delete, class: "dropdown-item btn-outline-dark", type: "button" %>
+              <%= link_to t(".log_out_text"), destroy_user_session_path, method: :delete, class: "dropdown-item btn-outline-dark", type: "button" %>
             </div>
           </div>
         <% else %>
-          <li class="d-inline mr-3"><%= link_to t(".log_in_text"), login_path %></li>
-          <li class="d-inline mr-3"><%= link_to t(".sign_up"), signup_path %></li>
+          <li class="d-inline mr-3"><%= link_to t(".log_in_text"), new_user_session_path %></li>
+          <li class="d-inline mr-3"><%= link_to t(".sign_up"), new_user_registration_path %></li>
         <% end %>
         <li class="d-inline mr-3">
-            <%= link_to cart_path do %>
-              <b id = "cart_count"><span><%= cart_counter %></span></b>
-              <%= image_tag("icon_home_cart.png") %>
-            <% end %>
+          <%= link_to cart_path do %>
+            <b id = "cart_count"><span><%= cart_counter %></span></b>
+            <%= image_tag("icon_home_cart.png") %>
+          <% end %>
         </li>
       </ul>
     </nav>
