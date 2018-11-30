@@ -29,6 +29,7 @@ en:
       log_out_text: Log out
       log_in_text: Log in
       sign_up: Sign up
+      dashboard: Dashboard
     footer:
       address: "Address:"
       address_text: 16 Ly Thuong Kiet, Thach Thang, Hai Chau, Da Nang
@@ -245,6 +246,11 @@ en:
         header: "Resend unlock instructions"
         label_email: "Email"
         title_submit: "Resend unlock instructions"
+    passwords:
+      new:
+        heading: Forgot your password?
+        heading_content: You can reset your password here.
+        placeholder_email: Your email address
   js:
     cart:
       error_update: "Error: %{error}"

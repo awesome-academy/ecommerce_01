@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   devise_for :users,
     controllers: {omniauth_callbacks: "users/omniauth_callbacks"}
 
+  mount RailsAdmin::Engine => "/admin", as: "rails_admin"
+
   get "/signup", to:"users#new"
   post "/signup", to: "users#create"
   get "/login", to: "sessions#new"

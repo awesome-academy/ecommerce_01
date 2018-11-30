@@ -13,7 +13,11 @@
             <div id="account_menu" class="dropdown-menu dropdown-menu-right bg-custom">
               <%= link_to t(".profile_text"), current_user, class: "dropdown-item btn-outline-dark", type:"button" %>
               <%= link_to t(".setting_text"), edit_user_registration_path, class: "dropdown-item btn-outline-dark", type: "button" %>
-              <%= link_to t(".order_history"), "#", class: "dropdown-item btn-outline-dark", type: "button" %>
+              <% if current_user.admin? %>
+                <%= link_to t(".dashboard"), "/admin", class: "dropdown-item btn-outline-dark", type: "button" %>
+              <% else %>
+                <%= link_to t(".order_history"), "#", class: "dropdown-item btn-outline-dark", type: "button" %>
+              <% end %>
               <hr>
               <%= link_to t(".log_out_text"), destroy_user_session_path, method: :delete, class: "dropdown-item btn-outline-dark", type: "button" %>
             </div>
