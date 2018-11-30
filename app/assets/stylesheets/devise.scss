@@ -21,6 +21,9 @@ $sign_up_deepskyblue: #00c6ff;
   font-size: 60px;
   margin-left: 10px;
   color: $sign_in_color;
+    a{
+     color: inherit;
+    }
   }
 
   .social_icon span:hover{
