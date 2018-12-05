@@ -10,14 +10,19 @@
   <body>
     <%= render "layouts/header" %>
     <div id = "content" class="container-fluid">
+      <div class="container category">
+        <%= render "categories/category_menu" %>
+      </div>
       <div class="container">
         <%= render "layouts/notice_alert" %>
       </div>
-      <!-- <div class="container"> -->
-        <%# flash.each do |message_type, message| %>
-          <%#= content_tag(:div, message, id: "flash-banner", class: "alert alert-#{message_type}") %>
-        <%# end %>
-      <!-- </div> -->
+      <div class="container">
+        <% if flash["notice"].blank? && flash["alert"].blank? %>
+          <% flash.each do |message_type, message| %>
+              <%= content_tag(:div, message, id: "flash-banner", class: "alert alert-#{message_type}") %>
+          <% end %>
+        <% end %>
+      </div>
       <div class="container">
         <%= yield %>
       </div>

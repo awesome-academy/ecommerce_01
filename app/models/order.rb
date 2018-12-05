@@ -1,4 +1,5 @@
 class Order < ApplicationRecord
+  after_create :send_accepted_order_email
   ORDER_NAME_REGEX = /\A[^0-9\-\+\*\_\.\@\?\n]+\z/i
   ORDER_PHONE_REGEX = /\A[0-9" "()+]+\z/
   belongs_to :user
@@ -18,4 +19,9 @@ class Order < ApplicationRecord
   enum payment_type: {cash: 0, ATM_Internet_Banking: 1, international_card: 2}
   enum shipper: {vn_post: 0, viettel_post: 1}
   accepts_nested_attributes_for :order_items
+  scope :orders_allowed_to_view, ->{where("status NOT IN (0, 4)")}
+
+  def send_accepted_order_email
+    OrderMailer.user_order_inform(self).deliver_now
+  end
 end

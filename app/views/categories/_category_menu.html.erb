@@ -1,0 +1,19 @@
+<div class="wrapper">
+    <!-- Sidebar -->
+  <nav id="sidebar">
+    <div class="sidebar-header">
+      <h3>Product Categories</h3>
+      <hr class="bg-light">
+    </div>
+    <ul class="list-unstyled components">
+      <li class="active">
+        <%= link_to "All Products", products_path %>
+    </li>
+      <%= render partial: "categories/category", collection: @categories, as: :category %>
+    </ul>
+  </nav>
+  <nav id="sidebar-virtual">
+    <div> </div>
+  </nav>
+</div>
+<script src="/../assets/category_menu.js"></script>

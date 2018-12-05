@@ -37,6 +37,10 @@ RailsAdmin.config do |config|
     index                         # mandatory
     new
     export
+    # all
+    import do
+      only ["User", "Product", "Category"]
+    end
     bulk_delete
     show
     edit
@@ -48,8 +52,35 @@ RailsAdmin.config do |config|
     # history_show
   end
 
-  action do
+  config.configure_with(:import) do |config|
+    config.logging = true
+  end
+
+  config.model "User" do
     import do
+      field :name
+      field :email
+      field :password
+      field :password_confirmation
+    end
+  end
+
+  config.model Product do
+    import do
+      field :name
+      field :description
+      field :price
+      field :color
+      field :unit_in_stock
+      field :vendor
+      field :category_id
+    end
+  end
+
+  config.model Category do
+    import do
+      field :name
+      field :parent_id
     end
   end
 

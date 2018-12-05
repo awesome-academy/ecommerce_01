@@ -38,3 +38,4 @@ recent_viewed_products: 15
 recent_products_expiration: 24
 domain: "0.0.0.0"
 truncate_lenght: 20
+truncate_lenght_mailer: 30

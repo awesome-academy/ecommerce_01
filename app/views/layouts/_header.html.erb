@@ -4,7 +4,6 @@
     <%= link_to t(".store_name"), root_path, id: "logo" %>
     <ul class="navbar-nav navbar-right d-inline">
         <li class="d-inline mr-3"><%= link_to t(".home_page"), root_path %></li>
-        <li class="d-inline mr-3"><%= link_to t(".categories"), categories_path %></li>
         <% if user_signed_in? %>
           <div class="dropdown d-inline mr-3">
             <a data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -16,7 +15,7 @@
               <% if current_user.admin? %>
                 <%= link_to t(".dashboard"), "/admin", class: "dropdown-item btn-outline-dark", type: "button" %>
               <% else %>
-                <%= link_to t(".order_history"), "#", class: "dropdown-item btn-outline-dark", type: "button" %>
+                <%= link_to t(".order_history"), orders_path, class: "dropdown-item btn-outline-dark", type: "button" %>
               <% end %>
               <hr>
               <%= link_to t(".log_out_text"), destroy_user_session_path, method: :delete, class: "dropdown-item btn-outline-dark", type: "button" %>

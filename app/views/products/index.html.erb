@@ -1,8 +1,26 @@
-<h1>
-  <%= link_to t(".categories"), categories_path %>
-  >
-  <%= @category.name %>
-</h1>
+<!-- search form -->
+<div class="container mt-3 bg-light">
+  <h3 class="bg-dark text-white">Search/Filter Products:</h3>
+  <%= search_form_for @q, url: search_products_path, method: :post do |f| %>
+    <%= f.condition_fields do |c| %>
+      <%= render "condition_fields", f: c %>
+    <% end %>
+    <p><%= link_to_add_fields "Add Conditions", f, :condition %></p>
+    <hr class="bg-info w-80">
+    <div class="row"><h5>Sort:</h5></div>
+    <div class="field row">
+      <%= f.sort_fields do |s| %>
+        <%= s.label :sort_field, class: "px-3" %>
+        <span><%= s.sort_select %></span>
+      <% end %>
+    </div>
+    <div class="row">
+      <div class="actions col-md-4 offset-md-4 btn"><%= f.submit "Search", url: search_products_path %></div>
+    </div>
+
+  <% end %>
+</div>
+<hr class="bg-info">
 <%= will_paginate @products %>
 <table>
   <tr>

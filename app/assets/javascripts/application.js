@@ -20,3 +20,4 @@
 //= require i18n/translations
 //= require cable.js
 //= require cart
+//= require product.js.coffee

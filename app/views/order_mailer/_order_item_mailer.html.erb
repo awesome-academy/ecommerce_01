@@ -1,0 +1,6 @@
+<tr>
+  <td><%= order_item.product.name %>(<%= truncate order_item.product.description, length: Settings.truncate_lenght_mailer %>)</td>
+  <td><%= number_to_currency order_item.price %></td>
+  <td><%= order_item.quantity %></td>
+  <td><%= number_to_currency(order_item.price * order_item.quantity) %></td>
+</tr>

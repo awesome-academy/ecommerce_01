@@ -1,8 +1,39 @@
-<h1><%= link_to t(".header"), categories_path %> >
+<h1>
   <%= @category.name %>
 </h1>
-<ol>
-  <% @categories.each do |category| %>
-  <li class = "categories"><%= link_to t(".product", name: category.name, count: category.products.size), category_path(category) %></li>
-  <% end %>
-</ol>
+<hr class="bg-info">
+<h5 class="py-5">Search/Filter</h5>
+<%= search_form_for @q, url: products_category_path(@category), class: "form-group"  do |f| %>
+  <div class="row">
+    <%= f.label :name_cont, "By Name: ", class: "col-md-2" %>
+    <span class="col-md-5"><%= f.search_field :name_cont %></span>
+  </div>
+  <div class="row">
+    <%= f.label :price_gteq, "By Price between: ", class: "col-md-2" %>
+    <span class="col-md-5"><%= f.search_field :price_gteq %></span>
+  </div>
+  <div class="row">
+    <%= f.label :price_lteq, "And: ", class: "col-md-2 pl-5" %>
+    <span class="col-md-5"><%= f.search_field :price_lteq %></span>
+  </div>
+  <div class="row">
+    <%= f.label :color_cont, "By Color:", class: "col-md-2" %>
+    <span class="col-md-5"><%= f.search_field :color_cont %></span>
+  </div>
+  <div class="row justify-content-center">
+    <% hidden_field_tag :category_id %>
+    <span class="col-md-4"><%= f.submit %></span>
+  </div>
+<% end %>
+<hr class="bg-info">
+<%= will_paginate @products %>
+<table>
+  <tr>
+    <th><%= t ".name" %></th>
+    <th><%= t ".description" %></th>
+    <th><%= t ".size" %></th>
+    <th><%= t ".color" %></th>
+    <th><%= t ".price" %></th>
+  </tr>
+  <%= render partial: "products/product", collection: @products, as: :product %>
+</table>
