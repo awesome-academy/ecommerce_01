@@ -39,3 +39,4 @@ recent_products_expiration: 24
 domain: "0.0.0.0"
 truncate_lenght: 20
 truncate_lenght_mailer: 30
+message_type: "alert"

@@ -7,7 +7,7 @@ class Ability
       can :manage, :all
     else
       can %i(read update), User, id: user.id
-      can %i(read destroy), [Order, Rating, Comment], user_id: user.id
+      can %i(read destroy update), [Order, Rating, Comment], user_id: user.id
     end
     #
     # The first argument to `can` is the action you are giving the user

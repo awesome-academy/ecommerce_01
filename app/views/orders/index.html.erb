@@ -16,10 +16,14 @@
           </tr>
         </thead>
         <tbody>
-          <%= render @orders %>
+          <% if @orders.any? %>
+            <%= render @orders %>
+          <% else %>
+            <tr class="text-align-center"><%= t ".no_orders" %></tr>
+          <% end %>
         </tbody>
       </table>
     </div>
   </div>
 </div>
-<script src="/../assets/order.js"></script>
+<%= javascript_include_tag "order.js" %>

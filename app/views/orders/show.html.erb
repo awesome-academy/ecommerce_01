@@ -20,11 +20,7 @@
         </tbody>
         <tfoot>
           <tr>
-            <td></td>
-            <td></td>
-            <td></td>
-            <td><strong><%= t ".total" %></strong></td>
-            <td><strong><%= number_to_currency @order.order_items.sum(:price) %></strong></td>
+            <td colspan="5" class="text-right"><strong><%= t ".total" %><%= number_to_currency @order.order_items.sum(:price) %></strong></td>
           </tr>
         </tfoot>
       </table>

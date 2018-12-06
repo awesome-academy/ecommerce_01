@@ -1,5 +1,4 @@
 class OrderMailer < ApplicationMailer
-
   # Subject can be set in your I18n file at config/locales/en.yml
   # with the following lookup:
   #
@@ -7,8 +6,8 @@ class OrderMailer < ApplicationMailer
   #
   def user_order_inform order
     @order = order
-    mail to: @order.user.email, subject: t("controller.order_mailer.user_inform",
-      number: order.id)
+    mail to: @order.user.email,
+      subject: t("controller.order_mailer.user_inform", number: order.id)
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
@@ -16,7 +15,7 @@ class OrderMailer < ApplicationMailer
   #
   #   en.order_mailer.admin_order_inform.subject
   #
-  def admin_order_inform order
+  def admin_order_inform
     @greeting = "Hi"
 
     mail to: "to@example.org"

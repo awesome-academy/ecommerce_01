@@ -45,8 +45,9 @@ class OrdersController < ApplicationController
 
   def update
     @order = Order.find_by id: params[:id]
-    return redirect_to orders_path if @order.approved? || @order.cancelled!
-    flash[:danger] = t "controller.orders.destroy_failed"
+    unless @order.cancelled!
+      flash[:danger] = t "controller.orders.destroy_failed"
+    end
     redirect_to orders_path
   end
 
