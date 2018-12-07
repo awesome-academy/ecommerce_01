@@ -1,4 +1,5 @@
 class RatingsController < ApplicationController
+  before_action :check_logged_in
   before_action :set_forwarding, :check_logged_in, :current_user,
     :load_product, only: %i(create update)
 

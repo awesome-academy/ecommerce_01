@@ -34,6 +34,10 @@ rating:
     three: 3
     four: 4
     five: 5
+user:
+  address:
+    minimum_length: 20
+    maximum_length: 500
 recent_viewed_products: 15
 recent_products_expiration: 24
 domain: "0.0.0.0"

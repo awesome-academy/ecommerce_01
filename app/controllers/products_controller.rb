@@ -41,12 +41,4 @@ class ProductsController < ApplicationController
     flash[:danger] = t "controller.products.not_found"
     redirect_to categories_path
   end
-
-  def load_product_rating
-    @rating = if current_user
-                @product.ratings.following_user(current_user.id).first
-              else
-                @product.ratings.new
-              end
-  end
 end
